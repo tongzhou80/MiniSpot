@@ -1,4 +1,4 @@
-This project is out of personal interest and is currently under lazy development.
+This project is out of personal interest and is currently under active development.
 
 ### Table of Contents
 - [Introduction](#introduction)
@@ -7,14 +7,12 @@ This project is out of personal interest and is currently under lazy development
 
 
 ### Introduction
-Magnolia JVM is an educational JVM for Java SE 8 Edition. It's designed as an teaching assisting tool for compiler
-classes and runtime classes.
+Aiming to be like [Minix](https://en.wikipedia.org/wiki/MINIX), MiniSpot is an educational JVM. Its implementatioin is mainly based on HotSpot 8 VM, but simplifies it.
 
-It supports a core subset of Java bytecodes, and shows the key designs and implementation of a Java virtual machine.
-
-It aims to be helpful to teaching in many ways.
+It may serve as a teaching assisting tool for compiler classes, or as a guide for students who are interested in high-level language VM implementations.
 For example, it provides a clear interface of intermediate representation so that students could use the interface to
 practing implementing static analysis and compiler optimizations.
+
 
 The following section gives an overview of some vital topics.
 
