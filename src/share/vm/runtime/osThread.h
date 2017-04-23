@@ -19,33 +19,42 @@
 #include "../utilities/globalDefinitions.h"
 #include "os.h"
 
+
 #ifdef __linux__
 #include <pthread.h>
 
 typedef pid_t thread_id_t;
 #endif
 
-enum ThreadState {
-    ALLOCATED,                    // Memory has been allocated but not initialized
-    INITIALIZED,                  // The thread has been initialized but yet started
-    RUNNABLE,                     // Has been started and is runnable, but not necessarily running
-    MONITOR_WAIT,                 // Waiting on a contended monitor lock
-    CONDVAR_WAIT,                 // Waiting on a condition variable
-    OBJECT_WAIT,                  // Waiting on an Object.wait() call
-    BREAKPOINTED,                 // Suspended at breakpoint
-    SLEEPING,                     // Thread.sleep()
-    ZOMBIE                        // All done, but not reclaimed yet
-};
+class Monitor;
+
+
 
 class OSThread {
     friend class VMStructs;
 
+public:
+    enum ThreadState {
+        ALLOCATED,                    // Memory has been allocated but not initialized
+        INITIALIZED,                  // The thread has been initialized but yet started
+        RUNNABLE,                     // Has been started and is runnable, but not necessarily running
+        MONITOR_WAIT,                 // Waiting on a contended monitor lock
+        CONDVAR_WAIT,                 // Waiting on a condition variable
+        OBJECT_WAIT,                  // Waiting on an Object.wait() call
+        BREAKPOINTED,                 // Suspended at breakpoint
+        SLEEPING,                     // Thread.sleep()
+        ZOMBIE                        // All done, but not reclaimed yet
+    };
+
 #ifdef __linux__
 private:
     pthread_t _pthread_id;
+    Monitor* _startThread_lock;     // sync parent and child in thread creation
 public:
     pthread_t pthread_id()  { return _pthread_id; }
     void set_pthread_id(pthread_t id)  { _pthread_id = id; }
+
+    Monitor* startThread_lock()  { return _startThread_lock; }
 #endif
 
 

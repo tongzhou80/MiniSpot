@@ -12,5 +12,5 @@ set(SOURCE_FILES
         src/share/vm/utilities/debug.cpp src/share/vm/utilities/debug.h
         src/share/vm/runtime/globals.cpp src/share/vm/runtime/globals.h
         src/share/vm/runtime/os.cpp src/share/vm/runtime/os.h
-        )
+        src/share/vm/runtime/mutex.cpp src/share/vm/runtime/mutex.h)
 add_executable(MiniSpot ${SOURCE_FILES})

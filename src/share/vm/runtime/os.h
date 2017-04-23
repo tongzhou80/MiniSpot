@@ -5,8 +5,11 @@
 #ifndef MINISPOT_OS_H
 #define MINISPOT_OS_H
 
-#include "osThread.h"
-#include "thread.h"
+#include <sys/types.h>
+
+class OSThread;
+class Thread;
+
 
 
 // threads

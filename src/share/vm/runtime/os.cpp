@@ -5,12 +5,13 @@
 #include "os.h"
 #include <pthread.h>
 #include "thread.h"
-
+#include "osThread.h"
 
 #ifdef __linux__
 
 #include <sys/syscall.h>
 #include <unistd.h>
+#include "mutex.h"
 
 /* For some reason, gettid is not implemented in glibc */
 pid_t os::gettid() {
@@ -28,23 +29,38 @@ pid_t os::gettid() {
 // Thread start routine for all newly created threads
 static void *java_start(Thread *thread) {
     Threads::register_thread(thread);
-    thread->osthread()->set_thread_id(os::gettid());
+    OSThread* osthread = thread->osthread();
+    osthread->set_thread_id(os::gettid());
 
     Monitor* sync = osthread->startThread_lock();
 
     // handshaking with parent thread
     {
-        MutexLockerEx ml(sync, Mutex::_no_safepoint_check_flag);
-
+        pthread_mutex_lock(sync->mutex());
         // notify parent thread
-        osthread->set_state(INITIALIZED);
-        sync->notify_all();
-
-        // wait until os::start_thread()
-        while (osthread->get_state() == INITIALIZED) {
-            sync->wait(Mutex::_no_safepoint_check_flag);
-        }
+        osthread->set_state(OSThread::INITIALIZED);
+        pthread_cond_broadcast(sync->cond()); // notify should be enough, but broadcast just in case
+        pthread_mutex_unlock(sync->mutex());
     }
+
+    // wait until os::start_thread()
+    while (osthread->get_state() == OSThread::INITIALIZED) {
+        pthread_cond_wait(sync->cond(), sync->mutex());
+    }
+
+//    // handshaking with parent thread
+//    {
+//        MutexLockerEx ml(sync, Mutex::_no_safepoint_check_flag);
+//
+//        // notify parent thread
+//        osthread->set_state(OSThread::INITIALIZED);
+//        sync->notify_all();
+//
+//        // wait until os::start_thread()
+//        while (osthread->get_state() == OSThread::INITIALIZED) {
+//            sync->wait(Mutex::_no_safepoint_check_flag);
+//        }
+//    }
 
     // call one more level start routine
     thread->run();
@@ -55,13 +71,13 @@ static void *java_start(Thread *thread) {
 bool os::create_thread(Thread* thread, ThreadType threadType, int stack_size) {
     OSThread* osthread = new OSThread();
     osthread->set_thread_type(threadType);
-    osthread->set_state(ALLOCATED);
+    osthread->set_state(OSThread::ALLOCATED);
     thread->set_osthread(osthread);
 
     pthread_t tid;
     int ret;
     printf("In main: creating thread\n");
-    ret =  pthread_create(&tid, NULL, java_start, thread);
+    ret =  pthread_create(&tid, NULL, (void* (*)(void*)) java_start, thread);
 
     if (ret != 0) {
         /* error handling */
@@ -69,16 +85,50 @@ bool os::create_thread(Thread* thread, ThreadType threadType, int stack_size) {
 
     osthread->set_pthread_id(tid);
 
+    // Wait until child thread is either initialized or aborted
+    /* the curly bracket is not necessary(as it is in HotSpot's code), just to make critical clearer */
+    {
+        Monitor* sync_with_child = osthread->startThread_lock();
+        pthread_mutex_lock(sync_with_child->mutex());
+        while (osthread->get_state() == OSThread::ALLOCATED) {
+            pthread_cond_wait(sync_with_child->cond(), sync_with_child->mutex());
+        }
+        pthread_mutex_unlock(osthread->startThread_lock()->mutex());
+    }
+
+
 //    // Wait until child thread is either initialized or aborted
 //    {
 //        Monitor* sync_with_child = osthread->startThread_lock();
 //        MutexLockerEx ml(sync_with_child, Mutex::_no_safepoint_check_flag);
-//        while ((state = osthread->get_state()) == ALLOCATED) {
+//        while ((state = osthread->get_state()) == OSThread::ALLOCATED) {
 //            sync_with_child->wait(Mutex::_no_safepoint_check_flag);
 //        }
 //    }
 
     return true;
+}
+
+// The INITIALIZED state is distinguished from the SUSPENDED state because the
+// conditions in which a thread is first started are different from those in which
+// a suspension is resumed.  These differences make it hard for us to apply the
+// tougher checks when starting threads that we want to do when resuming them.
+// However, when start_thread is called as a result of Thread.start, on a Java
+// thread, the operation is synchronized on the Java Thread object.  So there
+// cannot be a race to start the thread and hence for the thread to exit while
+// we are working on it.  Non-Java threads that start Java threads either have
+// to do so in a context in which races are impossible, or should do appropriate
+// locking.
+void os::start_thread(Thread *thread) {
+    OSThread* osthread = thread->osthread();
+    assert(osthread->get_state() != OSThread::INITIALIZED, "just checking");
+    Monitor* sync_with_child = osthread->startThread_lock();
+    {
+        pthread_mutex_lock(sync_with_child->mutex());
+        osthread->set_state(OSThread::RUNNABLE);
+        pthread_cond_signal(sync_with_child->cond());
+        pthread_mutex_unlock(sync_with_child->mutex());
+    }
 }
 
 #endif
