@@ -9,6 +9,11 @@
 #include <stdio.h>
 #include <cstdarg>
 
+
+
+/* JNICALL should be defined on some platform such as Windows */
+#define JNICALL
+
 /*
  * jboolean constants
  */
@@ -43,6 +48,11 @@ typedef jobject jarray;
 
 typedef int jmethodID;
 
+struct JavaVMOption {
+    char *optionString;  /* the option as a string in the default platform encoding */
+    void *extraInfo;
+};
+
 struct JavaVMInitArgs {
     jint version;
     jint nOptions;
@@ -50,12 +60,9 @@ struct JavaVMInitArgs {
     jboolean ignoreUnrecognized;
 };
 
-struct JavaVMOption {
-    char *optionString;  /* the option as a string in the default platform encoding */
-    void *extraInfo;
-};
 
-typedef struct JavaVMAttachArgs {
+
+struct JavaVMAttachArgs {
     jint version;
 
     char *name;
@@ -66,8 +73,32 @@ class JNIEnv;
 class JavaVM;
 
 
-/* JNICALL should be defined on some platform such as Windows */
-#define JNICALL
+struct JNINativeInterface_ {
+    void *reserved0;
+    void *reserved1;
+    void *reserved2;
+
+    void *reserved3;
+
+    jint (JNICALL *GetVersion)(JNIEnv *env);
+
+    jclass (JNICALL *FindClass)
+            (JNIEnv *env, const char *name);
+
+    jmethodID (JNICALL *GetMethodID)
+            (JNIEnv *env, jclass clazz, const char *name, const char *sig);
+
+    jmethodID (JNICALL *GetStaticMethodID)
+            (JNIEnv *env, jclass clazz, const char *name, const char *sig);
+
+    void (JNICALL *CallStaticVoidMethod)
+            (JNIEnv *env, jclass cls, jmethodID methodID, ...);
+
+    void (JNICALL *CallStaticVoidMethodV)
+            (JNIEnv *env, jclass cls, jmethodID methodID, va_list args);
+
+    /* and other methods */
+};
 
 struct JNIEnv
 {
@@ -107,32 +138,6 @@ struct JNIEnv
 #endif /*__cplusplus*/
 };
 
-struct JNINativeInterface_ {
-    void *reserved0;
-    void *reserved1;
-    void *reserved2;
-
-    void *reserved3;
-
-    jint (JNICALL *GetVersion)(JNIEnv *env);
-
-    jclass (JNICALL *FindClass)
-            (JNIEnv *env, const char *name);
-
-    jmethodID (JNICALL *GetMethodID)
-            (JNIEnv *env, jclass clazz, const char *name, const char *sig);
-
-    jmethodID (JNICALL *GetStaticMethodID)
-            (JNIEnv *env, jclass clazz, const char *name, const char *sig);
-
-    void (JNICALL *CallStaticVoidMethod)
-            (JNIEnv *env, jclass cls, jmethodID methodID, ...);
-
-    void (JNICALL *CallStaticVoidMethodV)
-            (JNIEnv *env, jclass cls, jmethodID methodID, va_list args);
-
-    /* and other methods */
-};
 
 /* Each function is accessible at a fixed offset through the JNIEnv argument.
  * The JNIEnv type is a pointer to a structure storing all JNI function pointers.

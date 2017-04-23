@@ -7,16 +7,23 @@ This project is out of personal interest and is currently under active developme
 
 
 ### Introduction
-Aiming to be like [Minix](https://en.wikipedia.org/wiki/MINIX), MiniSpot is an educational JVM. Its implementatioin is mainly based on HotSpot 8 VM, but simplifies it.
+Aiming to be like [Minix](https://en.wikipedia.org/wiki/MINIX), MiniSpot is an educational JVM based on HotSpot VM. 
 
 It may serve as a teaching assisting tool for compiler classes, or as a guide for students who are interested in high-level language VM implementations.
 For example, it provides a clear interface of intermediate representation so that students could use the interface to
 practing implementing static analysis and compiler optimizations.
 
+It has the following features compared to the original HotSpot
+- Editable with Clion IDE
+- Minimized platform-dependent code by using STL
+- Easier to extend, more modular and reusable
+
+For now, MiniSpot only supports linux_x86 platform.
 
 The following section gives an overview of some vital topics.
 
 ### Runtime Overview
+- [VM Creation](doc/creation.md)
 - [Bytecode Verification](doc/verification.md)
 - [Method Frame](doc/methodframe.md)
 - [Java Native Interface](doc/jni.md)

@@ -5,8 +5,11 @@
 #ifndef MINISPOT_THREAD_H
 #define MINISPOT_THREAD_H
 
-#include <cassert>
+#include <iostream>
+#include <map>
+#include "../utilities/debug.h"
 #include "../prims/jni.h"
+#include "osThread.h"
 
 // Class hierarchy
 // - Thread
@@ -19,10 +22,80 @@
 //   - JavaThread
 //   - WatcherThread
 
+class Threads;
+
 class Thread {
+public:
+    OSThread* _osthread;
+
+public:
+    // Constructor
+    Thread();
+    virtual ~Thread();
+
+    // initializtion
+    void initialize_thread_local_storage();
+
+    // thread entry point
+    virtual void run();
+
+    // OSThread
+    OSThread* osthread()  { return _osthread; }
+    void set_osthread(OSThread* osThread)  { _osthread = osThread; }
+
+    // Testers
+    virtual bool is_VM_thread()       const            { return false; }
+    virtual bool is_Java_thread()     const            { return false; }
+    virtual bool is_Compiler_thread() const            { return false; }
+    virtual bool is_Code_cache_sweeper_thread() const  { return false; }
+    virtual bool is_hidden_from_external_view() const  { return false; }
+    virtual bool is_jvmti_agent_thread() const         { return false; }
+    // True iff the thread can perform GC operations at a safepoint.
+    // Generally will be true only of VM thread and parallel GC WorkGang
+    // threads.
+    virtual bool is_GC_task_thread() const             { return false; }
+    virtual bool is_Watcher_thread() const             { return false; }
+    virtual bool is_Sampler_thread() const             { return false; }
+    virtual bool is_ConcurrentGC_thread() const        { return false; }
+    virtual bool is_Named_thread() const               { return false; }
+    virtual bool is_Worker_thread() const              { return false; }
+
+    virtual char* name() const { return (char*)"Unknown thread"; }
+
+    static Thread* current();
 
 };
 
+class Threads {
+#ifdef __linux__
+private:
+    static std::map<pthread_t, Thread*> _threads_table;
+public:
+    static Thread* get_pthread_by_id(pthread_t id)  { return _threads_table[id]; }
+    static void register_thread(Thread*);
+#endif
+public:
+    static jint create_vm(JavaVMInitArgs* args, bool* canTryAgain);
+    static bool destroy_vm();
+};
+
+
+
+#ifdef __linux__
+
+inline Thread* Thread::current() {
+#ifdef ASSERT
+    // This function is very high traffic. Define PARANOID to enable expensive
+    // asserts.
+
+#endif
+    Thread* thread = Threads::get_pthread_by_id(pthread_self());
+    assert(thread != NULL, "just checking");
+    return thread;
+}
+
+
+#endif
 // JavaThreadState keeps track of which part of the code a thread is executing in. This
 // information is needed by the safepoint code.
 //
@@ -60,27 +133,27 @@ private:
     JavaThread *_next;                          // The next thread in the Threads list
     //oop            _threadObj;                     // The Java level thread object
     JavaThreadState _thread_state;
+    JNIEnv        _jni_environment;
 public:
     JavaThreadState thread_state() const           { return _thread_state; }
     void set_thread_state(JavaThreadState s)       { _thread_state = s;    }
+
+    bool has_pending_exception();
+
+    JNIEnv* jni_environment()                      { return &_jni_environment; }
 
     /* Static */
     // Returns the running thread as a JavaThread
     static inline JavaThread* current();
 };
 
+
+
 // Inline implementation of JavaThread::current
 inline JavaThread* JavaThread::current() {
-    Thread* thread = ThreadLocalStorage::thread();
-    assert(thread != NULL && thread->is_Java_thread(), "just checking");
-    return (JavaThread*)thread;
+    return (JavaThread*)Thread::current();
 }
 
-class Threads {
-public:
-    static jint create_vm(JavaVMInitArgs* args, bool* canTryAgain);
-    static bool destroy_vm();
-};
 
 
 #endif //MINISPOT_THREAD_H

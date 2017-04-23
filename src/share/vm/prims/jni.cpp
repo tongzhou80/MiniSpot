@@ -2,8 +2,9 @@
 // Created by zhoutong1 on 1/1/17.
 //
 
-#include <cassert>
+#include <iostream>
 #include "jni.h"
+#include "../utilities/debug.h"
 #include "../runtime/thread.h"
 
 
@@ -32,10 +33,7 @@ static jint JNI_CreateJavaVM_inner(JavaVM **vm, void **penv, void *args) {
     result = Threads::create_vm((JavaVMInitArgs*) args, &can_try_again);
     if (result == JNI_OK) {
         JavaThread *thread = JavaThread::current();
-        assert(!thread->has_pending_exception(), "should have returned not OK");
         /* thread is thread_in_vm here */
-
-
 
         *vm = (JavaVM *)(&main_vm);
         *(JNIEnv**)penv = thread->jni_environment();

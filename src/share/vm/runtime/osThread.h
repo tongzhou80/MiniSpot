@@ -17,6 +17,13 @@
 
 #include "../prims/jni.h"
 #include "../utilities/globalDefinitions.h"
+#include "os.h"
+
+#ifdef __linux__
+#include <pthread.h>
+
+typedef pid_t thread_id_t;
+#endif
 
 enum ThreadState {
     ALLOCATED,                    // Memory has been allocated but not initialized
@@ -33,11 +40,22 @@ enum ThreadState {
 class OSThread {
     friend class VMStructs;
 
+#ifdef __linux__
 private:
+    pthread_t _pthread_id;
+public:
+    pthread_t pthread_id()  { return _pthread_id; }
+    void set_pthread_id(pthread_t id)  { _pthread_id = id; }
+#endif
+
+
+private:
+    thread_id_t _thread_id;
     OSThreadStartFunc _start_proc;  // Thread start routine
     void *_start_parm;              // Thread start routine parameter
     ThreadState _state;    // Thread state *hint*
     jint _interrupted;     // Thread.isInterrupted state
+    ThreadType _thread_type;
     //  volatile ThreadState _state;    // Thread state *hint*
     //  volatile jint _interrupted;     // Thread.isInterrupted state
 
@@ -48,6 +66,13 @@ private:
 
     // Methods
 public:
+
+    OSThread() {}
+
+    thread_id_t thread_id()  { return _thread_id; }
+    void set_thread_id(thread_id_t id)  { _thread_id = id; }
+    void set_thread_type(ThreadType threadType)  { _thread_type = threadType; }
+
     void set_state(ThreadState state) { _state = state; }
 
     ThreadState get_state() { return _state; }

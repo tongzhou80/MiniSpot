@@ -26,10 +26,10 @@ int main() {
      * pointer in env */
     JNI_CreateJavaVM(&jvm, (void**)&env, &vm_args);
     delete options;
-    /* invoke the main method using the JNI */
-    jclass cls = env->FindClass("Inc");
-    jmethodID mid = env->GetStaticMethodID(cls, "main", "([Ljava/lang/String;)V");
-    env->CallStaticVoidMethod(cls, mid, 100);
+//    /* invoke the main method using the JNI */
+//    jclass cls = env->FindClass("Inc");
+//    jmethodID mid = env->GetStaticMethodID(cls, "main", "([Ljava/lang/String;)V");
+//    env->CallStaticVoidMethod(cls, mid, 100);
     /* We are done. */
-    jvm->DestroyJavaVM();
+    // jvm->DestroyJavaVM();
 }
