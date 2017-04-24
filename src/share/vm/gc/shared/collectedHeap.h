@@ -1,0 +1,8 @@
+//
+// Created by tzhou on 4/23/17.
+//
+
+#ifndef MINISPOT_COLLECTEDHEAP_H
+#define MINISPOT_COLLECTEDHEAP_H
+
+#endif //MINISPOT_COLLECTEDHEAP_H

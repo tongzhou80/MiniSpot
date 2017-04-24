@@ -37,6 +37,8 @@
          "")                                        \
   diagnostic(bool, PrintThreadCreation, true,       \
          "")                                        \
+  /* GC flags */ \
+  develop(bool, UseSerialGC, true)                  \
 
 GENERATE_RUNTIME_FLAGS(DECLARE_DEVELOP_FLAG, DECLARE_DIAGNOSTIC_FLAG)
 

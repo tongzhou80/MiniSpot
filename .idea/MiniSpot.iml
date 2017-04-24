@@ -13,8 +13,11 @@
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/mutex.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/os.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/globals.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/init.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/mutex.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/init.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/threads/thread.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/threads/vmThread.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/threads/javaThread.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/threads/osThread.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/threads/osThread.h" isTestSource="false" />
@@ -22,6 +25,11 @@
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/threads/namedThread.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/threads/javaThread.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/threads/thread.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/threads/vmThread.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/gc/shared/collectedHeap.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/gc/shared/collectedHeap.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/memory/universe.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/memory/universe.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
     </content>

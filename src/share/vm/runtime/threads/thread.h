@@ -66,15 +66,31 @@ public:
 
 };
 
+
+class JavaThread;
+
 class Threads {
 #ifdef __linux__
 private:
-    static std::map<pthread_t, Thread*> _threads_table;
+    static std::map<pthread_t, Thread*> _threads_table; /* for current() */
 public:
     static Thread* get_pthread_by_id(pthread_t id)  { return _threads_table[id]; }
     static void register_thread(Thread*);
 #endif
+private:
+    static JavaThread* _thread_list; /* the head of the list */
+    static int         _number_of_threads;
+    static int         _number_of_non_daemon_threads;
+    static int         _return_code;
+    static int         _thread_claim_parity;
 public:
+    // Thread management
+    // force_daemon is a concession to JNI, where we may need to add a
+    // thread to the thread list before allocating its thread object
+    static void add(JavaThread* p, bool force_daemon = false);
+    static void remove(JavaThread* p);
+    static bool includes(JavaThread* p);
+
     static jint create_vm(JavaVMInitArgs* args, bool* canTryAgain);
     static bool destroy_vm();
 };

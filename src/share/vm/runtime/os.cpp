@@ -82,7 +82,7 @@ bool os::create_thread(Thread* thread, ThreadType threadType, int stack_size) {
     pthread_t tid;
     int ret =  pthread_create(&tid, NULL, (void* (*)(void*)) java_start, thread);
     if (PrintThreadCreation) {
-        printf("created thread, pthread id: " PID_FORMAT "\n", tid);
+        printf("created %s, pthread id: " PID_FORMAT "\n", thread_type_str(threadType), tid);
     }
 
 
@@ -104,10 +104,6 @@ bool os::create_thread(Thread* thread, ThreadType threadType, int stack_size) {
 
     }
 
-    start_thread(thread);
-
-
-    pthread_join(tid, (void**)&ret);
 
 //    // Wait until child thread is either initialized or aborted
 //    {

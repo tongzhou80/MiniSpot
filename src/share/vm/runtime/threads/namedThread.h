@@ -6,9 +6,9 @@
 #define MINISPOT_NAMEDTHREAD_H
 
 #include <cstring>
-#include "namedThread.h"
+#include "thread.h"
 
-class Thread;
+
 class JavaThread;
 
 
@@ -26,9 +26,9 @@ private:
 
 public:
     NamedThread();
-    ~NamedThread();
+
     // May only be called once per thread.
-    //void set_name(const char* format, ...)  ATTRIBUTE_PRINTF(2, 3);
+    void set_name(char* name)  { _name = name; }
     void initialize_named_thread();
     virtual bool is_Named_thread() const { return true; }
     virtual char* name() const { return _name == NULL ? (char*)"Unknown Thread" : _name; }

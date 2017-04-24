@@ -9,6 +9,8 @@
 
 // assertions
 #include <cstddef>
+#include <cstdio>
+#include <exception>
 
 
 /* @comment

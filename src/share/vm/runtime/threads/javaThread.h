@@ -51,6 +51,7 @@ private:
     JavaThreadState _thread_state;
     JNIEnv        _jni_environment;
 public:
+    void set_next(JavaThread* next)  { _next = next;}
     JavaThreadState thread_state() const           { return _thread_state; }
     void set_thread_state(JavaThreadState s)       { _thread_state = s;    }
 

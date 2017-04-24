@@ -33,11 +33,11 @@ static jint JNI_CreateJavaVM_inner(JavaVM **vm, void **penv, void *args) {
     bool can_try_again = true;
     result = Threads::create_vm((JavaVMInitArgs*) args, &can_try_again);
     if (result == JNI_OK) {
-        JavaThread *thread = JavaThread::current();
-        /* thread is thread_in_vm here */
-
-        *vm = (JavaVM *)(&main_vm);
-        *(JNIEnv**)penv = thread->jni_environment();
+//        JavaThread *thread = JavaThread::current();
+//        /* thread is thread_in_vm here */
+//
+//        *vm = (JavaVM *)(&main_vm);
+//        *(JNIEnv**)penv = thread->jni_environment();
     }
 }
 
