@@ -15,17 +15,30 @@
  * Macro trick: use do {} while (false) to turn a block into a single statement to avoid the ending semicolon issue.
  */
 #ifdef ASSERT
-    #define assert(condition, message) \
+#define assert(condition, args...) \
     do { \
         if (! (condition)) { \
-            std::cerr << "Assertion `" #condition "` failed in " << __FILE__ \
-                      << " line " << __LINE__ << ": " << message << std::endl; \
+            fprintf(stderr, "Assertion `" #condition "` failed in %s line %d: ", __FILE__, __LINE__); \
+            fprintf(stderr, ##args); \
+            fprintf(stderr, "\n"); \
             std::terminate(); \
         } \
     } while (false)
 #else
-    #define assert(condition, message) do { } while (false)
+#define assert(condition, message) do { } while (false)
 #endif
+//#ifdef ASSERT
+//    #define assert(condition, message) \
+//    do { \
+//        if (! (condition)) { \
+//            std::cerr << "Assertion `" #condition "` failed in " << __FILE__ \
+//                      << " line " << __LINE__ << ": " << message << std::endl; \
+//            std::terminate(); \
+//        } \
+//    } while (false)
+//#else
+//    #define assert(condition, message) do { } while (false)
+//#endif
 
 
 #define guarantee(condition, message) \

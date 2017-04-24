@@ -11,13 +11,17 @@
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/os.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/globals.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/mutex.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/osThread.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/os.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/globals.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/thread.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/osThread.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/mutex.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/thread.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/threads/thread.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/threads/javaThread.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/threads/osThread.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/threads/osThread.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/threads/namedThread.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/threads/namedThread.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/threads/javaThread.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/threads/thread.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
     </content>

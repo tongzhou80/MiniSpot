@@ -15,9 +15,9 @@
 // Note: the ThreadState is legacy code and is not correctly implemented.
 // Uses of ThreadState need to be replaced by the state in the JavaThread.
 
-#include "../prims/jni.h"
-#include "../utilities/globalDefinitions.h"
-#include "os.h"
+#include "../../prims/jni.h"
+#include "../../utilities/globalDefinitions.h"
+#include "../os.h"
 
 
 #ifdef __linux__
@@ -64,7 +64,7 @@ private:
     void *_start_parm;              // Thread start routine parameter
     ThreadState _state;    // Thread state *hint*
     jint _interrupted;     // Thread.isInterrupted state
-    ThreadType _thread_type;
+    os::ThreadType _thread_type;
     //  volatile ThreadState _state;    // Thread state *hint*
     //  volatile jint _interrupted;     // Thread.isInterrupted state
 
@@ -76,11 +76,11 @@ private:
     // Methods
 public:
 
-    OSThread() {}
+    OSThread();
 
     thread_id_t thread_id()  { return _thread_id; }
     void set_thread_id(thread_id_t id)  { _thread_id = id; }
-    void set_thread_type(ThreadType threadType)  { _thread_type = threadType; }
+    void set_thread_type(os::ThreadType threadType)  { _thread_type = threadType; }
 
     void set_state(ThreadState state) { _state = state; }
 

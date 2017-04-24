@@ -4,8 +4,9 @@
 
 #include "os.h"
 #include <pthread.h>
-#include "thread.h"
-#include "osThread.h"
+#include "threads/thread.h"
+#include "threads/osThread.h"
+#include "globals.h"
 
 #ifdef __linux__
 
@@ -44,9 +45,13 @@ static void *java_start(Thread *thread) {
     }
 
     // wait until os::start_thread()
+    if (PrintThreadCreation) {
+        printf("thread " PID_FORMAT " has initialized, wait until os::start_thread()\n", osthread->pthread_id());
+    }
     while (osthread->get_state() == OSThread::INITIALIZED) {
         pthread_cond_wait(sync->cond(), sync->mutex());
     }
+
 
 //    // handshaking with parent thread
 //    {
@@ -75,9 +80,11 @@ bool os::create_thread(Thread* thread, ThreadType threadType, int stack_size) {
     thread->set_osthread(osthread);
 
     pthread_t tid;
-    int ret;
-    printf("In main: creating thread\n");
-    ret =  pthread_create(&tid, NULL, (void* (*)(void*)) java_start, thread);
+    int ret =  pthread_create(&tid, NULL, (void* (*)(void*)) java_start, thread);
+    if (PrintThreadCreation) {
+        printf("created thread, pthread id: " PID_FORMAT "\n", tid);
+    }
+
 
     if (ret != 0) {
         /* error handling */
@@ -94,8 +101,13 @@ bool os::create_thread(Thread* thread, ThreadType threadType, int stack_size) {
             pthread_cond_wait(sync_with_child->cond(), sync_with_child->mutex());
         }
         pthread_mutex_unlock(osthread->startThread_lock()->mutex());
+
     }
 
+    start_thread(thread);
+
+
+    pthread_join(tid, (void**)&ret);
 
 //    // Wait until child thread is either initialized or aborted
 //    {
@@ -121,7 +133,6 @@ bool os::create_thread(Thread* thread, ThreadType threadType, int stack_size) {
 // locking.
 void os::start_thread(Thread *thread) {
     OSThread* osthread = thread->osthread();
-    assert(osthread->get_state() != OSThread::INITIALIZED, "just checking");
     Monitor* sync_with_child = osthread->startThread_lock();
     {
         pthread_mutex_lock(sync_with_child->mutex());

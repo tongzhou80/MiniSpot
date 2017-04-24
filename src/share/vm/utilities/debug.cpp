@@ -3,6 +3,6 @@
 //
 
 #include "debug.h"
-#include "../runtime/thread.h"
+#include "../runtime/threads/thread.h"
 #include "../runtime/globals.h"
 

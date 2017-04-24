@@ -5,7 +5,8 @@
 #include <iostream>
 #include "jni.h"
 #include "../utilities/debug.h"
-#include "../runtime/thread.h"
+#include "../runtime/threads/thread.h"
+#include "../runtime/threads/javaThread.h"
 
 
 JavaVM main_vm;

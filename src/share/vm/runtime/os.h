@@ -12,38 +12,40 @@ class Thread;
 
 
 
-// threads
 
-enum ThreadType {
-    vm_thread,
-    cgc_thread,        // Concurrent GC thread
-    pgc_thread,        // Parallel GC thread
-    java_thread,
-    compiler_thread,
-    watcher_thread,
-    sampler_thread,
-    os_thread
-};
-
-static const char * thread_type_str(ThreadType t) {
-    switch(t){
-        case vm_thread:       return "VMThread";
-        case cgc_thread:      return "ConcGCThread";
-        case pgc_thread:      return "ParGCThread";
-        case java_thread:     return "JavaThread";
-        case compiler_thread: return "CompilerThread";
-        case watcher_thread:  return "WatcherThread";
-        case sampler_thread:  return "SamplerThread";
-        default:              return "UnknownThread";
-    }
-}
 
 class os {
+    // threads
+public:
+    enum ThreadType {
+        vm_thread,
+        cgc_thread,        // Concurrent GC thread
+        pgc_thread,        // Parallel GC thread
+        java_thread,
+        compiler_thread,
+        watcher_thread,
+        sampler_thread,
+        os_thread
+    };
+
+    static const char * thread_type_str(ThreadType t) {
+        switch(t){
+            case vm_thread:       return "VMThread";
+            case cgc_thread:      return "ConcGCThread";
+            case pgc_thread:      return "ParGCThread";
+            case java_thread:     return "JavaThread";
+            case compiler_thread: return "CompilerThread";
+            case watcher_thread:  return "WatcherThread";
+            case sampler_thread:  return "SamplerThread";
+            default:              return "UnknownThread";
+        }
+    }
+
 private:
     static OSThread*          _starting_thread;
 public:
-    void start_thread(Thread*);
-    bool create_thread(Thread*, ThreadType, int stack_size);
+    static void start_thread(Thread*);
+    static bool create_thread(Thread*, ThreadType, int stack_size=0);
 
 #ifdef __linux__
 public:

@@ -35,6 +35,8 @@
          "")                                        \
   diagnostic(bool, PrintClassCreation, true,        \
          "")                                        \
+  diagnostic(bool, PrintThreadCreation, true,       \
+         "")                                        \
 
 GENERATE_RUNTIME_FLAGS(DECLARE_DEVELOP_FLAG, DECLARE_DIAGNOSTIC_FLAG)
 
