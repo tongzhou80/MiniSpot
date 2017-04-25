@@ -11,10 +11,11 @@ Aiming to be like [Minix](https://en.wikipedia.org/wiki/MINIX), MiniSpot is an e
 
 It may serve as a teaching assisting tool for compiler classes, or as a guide for students who are interested in high-level language VM implementations.
 For example, it provides a clear interface of intermediate representation so that students could use the interface to
-practing implementing static analysis and compiler optimizations.
+practice implementing static analysis and compiler optimizations.
 
 It has the following features compared to the original HotSpot
 - Editable with Clion IDE
+- Minimized production-style code, much easier to read
 - Minimized platform-dependent code by using STL
 - Easier to extend, more modular and reusable
 

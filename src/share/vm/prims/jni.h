@@ -37,6 +37,7 @@ class JavaVM;
 class JavaVMInitArgs;
 
 typedef int jint;
+typedef unsigned int juint;
 typedef jint jsize;
 typedef bool jboolean;
 

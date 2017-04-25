@@ -43,11 +43,12 @@
 //#endif
 
 
-#define guarantee(condition, message) \
+#define guarantee(condition, args...) \
     do { \
         if (! (condition)) { \
-            std::cerr << "Guarantee `" #condition "` failed in " << __FILE__ \
-                      << " line " << __LINE__ << ": " << message << std::endl; \
+            fprintf(stderr, "Assertion `" #condition "` failed in %s line %d: ", __FILE__, __LINE__); \
+            fprintf(stderr, ##args); \
+            fprintf(stderr, "\n"); \
             std::terminate(); \
         } \
     } while (false)

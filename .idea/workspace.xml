@@ -12,26 +12,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e2ee2cf8-5db1-4444-87a3-7be79d42b33c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/share/vm/gc/shared/collectedHeap.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/share/vm/gc/shared/collectedHeap.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/share/vm/memory/universe.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/share/vm/memory/universe.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/share/vm/runtime/init.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/share/vm/runtime/init.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/share/vm/runtime/threads/vmThread.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/share/vm/runtime/threads/vmThread.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/share/vm/gc/gcCause.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/share/vm/gc/gcCause.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/share/vm/gc/shared/generation.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/share/vm/gc/shared/generation.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/share/vm/memory/memRegion.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/share/vm/memory/memRegion.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/share/vm/oops/klass.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/share/vm/oops/klass.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/share/vm/oops/oop.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/share/vm/oops/oop.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/share/vm/oops/oopsHierarchy.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/share/vm/oops/oopsHierarchy.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/share/vm/runtime/handles.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/share/vm/runtime/handles.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/share/vm/runtime/vmStructs.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/share/vm/runtime/vmStructs.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/share/vm/utilities/exceptions.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/share/vm/utilities/exceptions.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/MiniSpot.iml" afterPath="$PROJECT_DIR$/.idea/MiniSpot.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/share/vm/prims/jni.cpp" afterPath="$PROJECT_DIR$/src/share/vm/prims/jni.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/launcher.md" afterPath="$PROJECT_DIR$/doc/launcher.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/share/vm/gc/shared/collectedHeap.h" afterPath="$PROJECT_DIR$/src/share/vm/gc/shared/collectedHeap.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/share/vm/prims/jni.h" afterPath="$PROJECT_DIR$/src/share/vm/prims/jni.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/share/vm/runtime/globals.h" afterPath="$PROJECT_DIR$/src/share/vm/runtime/globals.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/share/vm/runtime/os.cpp" afterPath="$PROJECT_DIR$/src/share/vm/runtime/os.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/share/vm/runtime/threads/javaThread.h" afterPath="$PROJECT_DIR$/src/share/vm/runtime/threads/javaThread.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/share/vm/runtime/threads/namedThread.cpp" afterPath="$PROJECT_DIR$/src/share/vm/runtime/threads/namedThread.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/share/vm/runtime/threads/namedThread.h" afterPath="$PROJECT_DIR$/src/share/vm/runtime/threads/namedThread.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/share/vm/runtime/threads/thread.cpp" afterPath="$PROJECT_DIR$/src/share/vm/runtime/threads/thread.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/share/vm/runtime/threads/thread.h" afterPath="$PROJECT_DIR$/src/share/vm/runtime/threads/thread.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/share/vm/utilities/debug.h" afterPath="$PROJECT_DIR$/src/share/vm/utilities/debug.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/share/vm/utilities/globalDefinitions.h" afterPath="$PROJECT_DIR$/src/share/vm/utilities/globalDefinitions.h" />
     </list>
     <ignored path="MiniSpot.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,110 +59,112 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="thread.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/share/vm/runtime/threads/thread.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
-              <folding>
-                <element signature="e#48#67#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="universe.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/share/vm/memory/universe.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding>
-                <element signature="e#39#60#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="collectedHeap.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/share/vm/gc/shared/collectedHeap.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="collectedHeap.h" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/share/vm/gc/shared/collectedHeap.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="universe.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/share/vm/memory/universe.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="16" column="30" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="globals.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/share/vm/runtime/globals.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="538">
-              <caret line="39" column="17" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="thread.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/share/vm/runtime/threads/thread.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="74" column="75" selection-start-line="74" selection-start-column="75" selection-end-line="74" selection-end-column="75" />
-              <folding>
-                <element signature="e#101#120#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="init.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/share/vm/runtime/init.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
-              <folding>
-                <element signature="e#39#56#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="init.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/share/vm/runtime/init.h">
+      <file leaf-file-name="debug.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/share/vm/utilities/debug.h">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="480">
-              <caret line="24" column="11" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
+              <caret line="45" column="36" selection-start-line="45" selection-start-column="36" selection-end-line="45" selection-end-column="36" />
+              <folding>
+                <element signature="e#129#147#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="collectedHeap.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/share/vm/gc/shared/collectedHeap.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2900">
+              <caret line="145" column="48" selection-start-line="145" selection-start-column="48" selection-end-line="145" selection-end-column="48" />
+              <folding>
+                <element signature="e#370#405#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="generation.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/share/vm/gc/shared/generation.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="javaThread.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/share/vm/runtime/threads/javaThread.cpp">
+      <file leaf-file-name="generation.h" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/share/vm/gc/shared/generation.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+            <state relative-caret-position="160">
+              <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gcCause.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/share/vm/gc/gcCause.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="657">
+              <caret line="96" column="1" selection-start-line="96" selection-start-column="1" selection-end-line="96" selection-end-column="1" />
+              <folding>
+                <marker date="1493078940471" expanded="true" signature="115:2510" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gcCause.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/share/vm/gc/gcCause.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-23">
+              <caret line="79" column="12" selection-start-line="79" selection-start-column="12" selection-end-line="79" selection-end-column="12" />
+              <folding>
+                <marker date="1493078885961" expanded="true" signature="458:3523" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="memRegion.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/share/vm/memory/memRegion.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="177">
+              <caret line="28" column="18" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="oop.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/share/vm/oops/oop.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="337">
+              <caret line="26" column="2" selection-start-line="26" selection-start-column="2" selection-end-line="26" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="handles.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/share/vm/runtime/handles.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="globalDefinitions.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/share/vm/utilities/globalDefinitions.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="232">
+              <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
+              <folding>
+                <element signature="e#123#141#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -172,10 +182,8 @@
         <option value="$PROJECT_DIR$/src/share/vm/utilities/debug.cpp" />
         <option value="$PROJECT_DIR$/doc/Exception.md" />
         <option value="$PROJECT_DIR$/doc/creation.md" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/os/linux/osThread_linux.h" />
         <option value="$PROJECT_DIR$/src/os/linux/osThread_linux.cpp" />
-        <option value="$PROJECT_DIR$/src/share/vm/prims/jni.h" />
         <option value="$PROJECT_DIR$/main.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/src/share/vm/runtime/mutex.cpp" />
@@ -183,10 +191,8 @@
         <option value="$PROJECT_DIR$/src/share/vm/runtime/os.h" />
         <option value="$PROJECT_DIR$/src/share/vm/runtime/osThread.h" />
         <option value="$PROJECT_DIR$/src/share/vm/runtime/osThread.cpp" />
-        <option value="$PROJECT_DIR$/src/share/vm/utilities/globalDefinitions.h" />
         <option value="$PROJECT_DIR$/src/share/vm/runtime/thread.cpp" />
         <option value="$PROJECT_DIR$/src/share/vm/runtime/thread.h" />
-        <option value="$PROJECT_DIR$/src/share/vm/utilities/debug.h" />
         <option value="$PROJECT_DIR$/src/share/vm/runtime/threads/namedThread.h" />
         <option value="$PROJECT_DIR$/src/share/vm/runtime/threads/namedThread.cpp" />
         <option value="$PROJECT_DIR$/src/share/vm/runtime/threads/vmThread.cpp" />
@@ -200,8 +206,24 @@
         <option value="$PROJECT_DIR$/src/share/vm/runtime/threads/thread.cpp" />
         <option value="$PROJECT_DIR$/src/share/vm/memory/universe.h" />
         <option value="$PROJECT_DIR$/src/share/vm/runtime/init.cpp" />
-        <option value="$PROJECT_DIR$/src/share/vm/runtime/globals.h" />
         <option value="$PROJECT_DIR$/src/share/vm/memory/universe.cpp" />
+        <option value="$PROJECT_DIR$/doc/launcher.md" />
+        <option value="$PROJECT_DIR$/src/share/vm/runtime/vmStructs.h" />
+        <option value="$PROJECT_DIR$/src/share/vm/memory/memRegion.h" />
+        <option value="$PROJECT_DIR$/src/share/vm/utilities/globalDefinitions.h" />
+        <option value="$PROJECT_DIR$/src/share/vm/utilities/exceptions.h" />
+        <option value="$PROJECT_DIR$/src/share/vm/oops/oopsHierarchy.h" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/share/vm/prims/jni.h" />
+        <option value="$PROJECT_DIR$/src/share/vm/runtime/handles.h" />
+        <option value="$PROJECT_DIR$/src/share/vm/oops/klass.h" />
+        <option value="$PROJECT_DIR$/src/share/vm/oops/oop.h" />
+        <option value="$PROJECT_DIR$/src/share/vm/runtime/globals.h" />
+        <option value="$PROJECT_DIR$/src/share/vm/utilities/debug.h" />
+        <option value="$PROJECT_DIR$/src/share/vm/gc/gcCause.h" />
+        <option value="$PROJECT_DIR$/src/share/vm/gc/gcCause.cpp" />
+        <option value="$PROJECT_DIR$/src/share/vm/gc/shared/collectedHeap.h" />
+        <option value="$PROJECT_DIR$/src/share/vm/gc/shared/generation.h" />
       </list>
     </option>
   </component>
@@ -391,7 +413,59 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="oops" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MiniSpot" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MiniSpot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="share" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="memory" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MiniSpot" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MiniSpot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="share" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gc" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -422,32 +496,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="shared" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MiniSpot" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MiniSpot" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="share" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gc" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -786,192 +834,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/old/share/vm/runtime/thread.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/share/vm/utilities/globalDefinitions.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotspot8_src/share/vm/runtime/osThread.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="545">
-          <caret line="78" column="14" selection-start-line="78" selection-start-column="14" selection-end-line="78" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotspot8_src/share/vm/runtime/thread.inline.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/share/vm/utilities/debug.hpp" />
-    <entry file="file://$PROJECT_DIR$/hotspot8_src/share/vm/runtime/thread.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="2149" column="75" selection-start-line="2149" selection-start-column="55" selection-end-line="2149" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotspot8_src/share/vm/runtime/thread.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="35400">
-          <caret line="1770" column="1" selection-start-line="1770" selection-start-column="1" selection-end-line="1770" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/share/vm/global/GlobalFlags.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="706">
-          <caret line="33" column="69" selection-start-line="6" selection-start-column="0" selection-end-line="33" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/share/vm/global/GlobalFlags.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old/share/vm/global/TypeDef.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotspot8_src/share/vm/utilities/vmError.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21560">
-          <caret line="1078" column="5" selection-start-line="1078" selection-start-column="5" selection-end-line="1078" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotspot8_src/share/vm/utilities/debug.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2116">
-          <caret line="238" column="17" selection-start-line="238" selection-start-column="17" selection-end-line="238" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotspot8_src/share/vm/utilities/debug.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="216" column="14" selection-start-line="216" selection-start-column="5" selection-end-line="216" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotspot8_src/share/vm/utilities/vmError.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/share/vm/runtime/globals.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="67" selection-start-line="6" selection-start-column="67" selection-end-line="6" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/share/vm/utilities/debug.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding>
-            <element signature="e#48#66#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/doc/exception.md">
-      <provider editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            <folding />
-          </first_editor>
-          <second_editor>
-            <js_state />
-          </second_editor>
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="40">
-            <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/doc/debug.md">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="42" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="120">
-            <caret line="6" column="75" selection-start-line="6" selection-start-column="75" selection-end-line="6" selection-end-column="75" />
-            <folding />
-          </first_editor>
-          <second_editor>
-            <js_state />
-          </second_editor>
-        </state>
-      </provider>
-      <provider editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/doc/creation.md">
-      <provider editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            <folding />
-          </first_editor>
-          <second_editor>
-            <js_state />
-          </second_editor>
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="280">
-            <caret line="14" column="3" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/doc/jni.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
         <state split_layout="FIRST">
@@ -1011,42 +873,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="20" column="61" selection-start-line="20" selection-start-column="61" selection-end-line="20" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="340">
-            <caret line="17" column="48" selection-start-line="17" selection-start-column="48" selection-end-line="17" selection-end-column="48" />
-            <folding />
-          </first_editor>
-          <second_editor>
-            <js_state />
-          </second_editor>
-        </state>
-      </provider>
-      <provider editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/share/vm/runtime/mutex.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -1081,24 +907,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/share/vm/prims/jni.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="543">
-          <caret line="166" column="9" selection-start-line="166" selection-start-column="9" selection-end-line="166" selection-end-column="9" />
-          <folding>
-            <element signature="e#96#114#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/share/vm/utilities/globalDefinitions.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/share/vm/runtime/threads/osThread.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1158">
@@ -1117,29 +925,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/share/vm/utilities/debug.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/share/vm/runtime/os.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="258">
           <caret line="28" column="6" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/share/vm/runtime/os.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2042">
-          <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
-          <folding>
-            <element signature="e#39#54#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1207,22 +997,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/share/vm/runtime/threads/thread.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
-          <folding>
-            <element signature="e#48#67#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/share/vm/runtime/init.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
           <folding>
-            <element signature="e#39#56#0" expanded="true" />
+            <element signature="e#39#56#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1232,34 +1012,82 @@
         <state relative-caret-position="140">
           <caret line="74" column="75" selection-start-line="74" selection-start-column="75" selection-end-line="74" selection-end-column="75" />
           <folding>
-            <element signature="e#101#120#0" expanded="true" />
+            <element signature="e#101#120#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/share/vm/runtime/threads/thread.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
+          <folding>
+            <element signature="e#48#67#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doc/launcher.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="200">
+            <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
+            <folding />
+          </first_editor>
+          <second_editor>
+            <js_state />
+          </second_editor>
+        </state>
+      </provider>
+      <provider editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/share/vm/memory/universe.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="16" column="30" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
+        <state relative-caret-position="280">
+          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/share/vm/runtime/globals.h">
+    <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="538">
-          <caret line="39" column="17" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="17" />
+        <state relative-caret-position="580">
+          <caret line="31" column="47" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/share/vm/runtime/os.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="137" column="5" selection-start-line="137" selection-start-column="5" selection-end-line="137" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/share/vm/memory/universe.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state relative-caret-position="400">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
-            <element signature="e#39#60#0" expanded="true" />
+            <element signature="e#39#60#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/share/vm/runtime/vmStructs.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1271,10 +1099,218 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/share/vm/gc/shared/collectedHeap.h">
+    <entry file="file://$PROJECT_DIR$/src/share/vm/memory/memRegion.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/share/vm/utilities/exceptions.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/share/vm/runtime/vmStructs.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/share/vm/utilities/exceptions.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="20" column="61" selection-start-line="20" selection-start-column="61" selection-end-line="20" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="440">
+            <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor>
+            <js_state />
+          </second_editor>
+        </state>
+      </provider>
+      <provider editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/share/vm/oops/oop.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/share/vm/oops/oopsHierarchy.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/share/vm/prims/jni.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="39" column="20" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/share/vm/runtime/globals.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="691">
+          <caret line="41" column="53" selection-start-line="41" selection-start-column="53" selection-end-line="41" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/share/vm/oops/oopsHierarchy.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/share/vm/oops/klass.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-689">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="e#745#761#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/share/vm/oops/klass.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/share/vm/runtime/handles.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/share/vm/runtime/handles.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/share/vm/oops/oop.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="26" column="2" selection-start-line="26" selection-start-column="2" selection-end-line="26" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/share/vm/memory/memRegion.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="28" column="18" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/share/vm/utilities/globalDefinitions.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
+          <folding>
+            <element signature="e#123#141#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/share/vm/gc/gcCause.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="657">
+          <caret line="96" column="1" selection-start-line="96" selection-start-column="1" selection-end-line="96" selection-end-column="1" />
+          <folding>
+            <marker date="1493078940471" expanded="true" signature="115:2510" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/share/vm/gc/gcCause.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-23">
+          <caret line="79" column="12" selection-start-line="79" selection-start-column="12" selection-end-line="79" selection-end-column="12" />
+          <folding>
+            <marker date="1493078885961" expanded="true" signature="458:3523" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/share/vm/utilities/debug.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="45" column="36" selection-start-line="45" selection-start-column="36" selection-end-line="45" selection-end-column="36" />
+          <folding>
+            <element signature="e#129#147#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/share/vm/gc/shared/collectedHeap.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2900">
+          <caret line="145" column="48" selection-start-line="145" selection-start-column="48" selection-end-line="145" selection-end-column="48" />
+          <folding>
+            <element signature="e#370#405#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/share/vm/gc/shared/generation.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/share/vm/gc/shared/generation.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
           <folding />
         </state>
       </provider>
