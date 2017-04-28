@@ -6,7 +6,7 @@
 #define MINISPOT_GENERATION_H
 
 class Generation {
-    
+
 };
 
 #endif //MINISPOT_GENERATION_H

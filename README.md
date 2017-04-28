@@ -24,6 +24,8 @@ For now, MiniSpot only supports linux_x86 platform.
 The following section gives an overview of some vital topics.
 
 ### Runtime Overview
+MiniSpot implements most of HotSpot's runtime services' interface, you may read HotSpot' [runtime overview](http://openjdk.java.net/groups/hotspot/docs/RuntimeOverview.html) first 
+to have a general idea. The following overview is MiniSpot specific.
 - [VM Creation](doc/creation.md)
 - [Bytecode Verification](doc/verification.md)
 - [Method Frame](doc/methodframe.md)
