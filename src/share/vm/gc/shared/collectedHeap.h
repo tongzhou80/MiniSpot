@@ -25,7 +25,10 @@
 //   ParallelScavengeHeap
 //
 class CollectedHeap {
+protected:
     MemRegion _reserved;
+    int _alignment;
+    int _size; /* size usually means size in words in the VM */
 
     //BarrierSet* _barrier_set;
     bool _is_gc_active;
@@ -40,6 +43,44 @@ class CollectedHeap {
 
 public:
     CollectedHeap();
+
+    int size()  { return _size; }
+    int size_in_words()  { return size(); }
+    int size_in_bytes() { return WtoB(size()); }
+
+    /**
+    * Returns JNI error code JNI_ENOMEM if memory could not be allocated,
+    * and JNI_OK on success.
+    */
+    virtual jint initialize() = 0;
+
+    // In many heaps, there will be a need to perform some initialization activities
+    // after the Universe is fully formed, but before general heap allocation is allowed.
+    // This is the correct place to place such initialization methods.
+    virtual void post_initialize();
+
+    // Stop any onging concurrent work and prepare for exit.
+    virtual void stop() {}
+
+
+    void initialize_reserved_region(HeapWord *start, HeapWord *end);
+    MemRegion reserved_region() const { return _reserved; }
+    HeapWord* base() const { return reserved_region().start(); }
+
+    virtual size_t capacity() const = 0;
+
+
+    // Returns "TRUE" if "p" points into the reserved area of the heap.
+    bool is_in_reserved(const void* p) const {
+        return _reserved.contains(p);
+    }
+
+    // Returns "TRUE" iff "p" points into the committed areas of the heap.
+    // This method can be expensive so avoid using it in performance critical
+    // code.
+    virtual bool is_in(const void* p) const = 0;
+
+
 
     // Do common initializations that must follow instance construction,
     // for example, those needing virtual calls.
@@ -96,38 +137,6 @@ public:
     // Fill with a single object (either an int array or a java.lang.Object).
     static void fill_with_object_impl(HeapWord* start, size_t words, bool zap = true);
 
-
-
-    /**
-    * Returns JNI error code JNI_ENOMEM if memory could not be allocated,
-    * and JNI_OK on success.
-    */
-    virtual jint initialize() = 0;
-
-    // In many heaps, there will be a need to perform some initialization activities
-    // after the Universe is fully formed, but before general heap allocation is allowed.
-    // This is the correct place to place such initialization methods.
-    virtual void post_initialize();
-
-    // Stop any onging concurrent work and prepare for exit.
-    virtual void stop() {}
-
-    void initialize_reserved_region(HeapWord *start, HeapWord *end);
-    MemRegion reserved_region() const { return _reserved; }
-    HeapWord* base() const { return reserved_region().start(); }
-
-    virtual size_t capacity() const = 0;
-
-
-    // Returns "TRUE" if "p" points into the reserved area of the heap.
-    bool is_in_reserved(const void* p) const {
-        return _reserved.contains(p);
-    }
-
-    // Returns "TRUE" iff "p" points into the committed areas of the heap.
-    // This method can be expensive so avoid using it in performance critical
-    // code.
-    virtual bool is_in(const void* p) const = 0;
 
 
 

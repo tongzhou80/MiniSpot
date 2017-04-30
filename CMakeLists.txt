@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
 project(MiniSpot)
 
+include_directories(src/share/vm)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -lpthread")
 
 set(SOURCE_FILES
@@ -12,5 +13,5 @@ set(SOURCE_FILES
         src/share/vm/utilities/debug.cpp src/share/vm/utilities/debug.h
         src/share/vm/runtime/globals.cpp src/share/vm/runtime/globals.h
         src/share/vm/runtime/os.cpp src/share/vm/runtime/os.h
-        src/share/vm/runtime/mutex.cpp src/share/vm/runtime/mutex.h src/share/vm/runtime/threads/javaThread.cpp src/share/vm/runtime/threads/javaThread.h src/share/vm/runtime/threads/namedThread.cpp src/share/vm/runtime/threads/namedThread.h src/share/vm/runtime/threads/vmThread.cpp src/share/vm/runtime/threads/vmThread.h src/share/vm/runtime/init.cpp src/share/vm/runtime/init.h src/share/vm/memory/universe.cpp src/share/vm/memory/universe.h src/share/vm/gc/shared/collectedHeap.cpp src/share/vm/gc/shared/collectedHeap.h src/share/vm/memory/memRegion.cpp src/share/vm/memory/memRegion.h src/share/vm/runtime/vmStructs.cpp src/share/vm/runtime/vmStructs.h src/share/vm/utilities/exceptions.cpp src/share/vm/utilities/exceptions.h src/share/vm/oops/oop.cpp src/share/vm/oops/oop.h src/share/vm/oops/oopsHierarchy.cpp src/share/vm/oops/oopsHierarchy.h src/share/vm/oops/klass.cpp src/share/vm/oops/klass.h src/share/vm/runtime/handles.cpp src/share/vm/runtime/handles.h src/share/vm/gc/gcCause.cpp src/share/vm/gc/gcCause.h src/share/vm/gc/shared/generation.cpp src/share/vm/gc/shared/generation.h)
+        src/share/vm/runtime/mutex.cpp src/share/vm/runtime/mutex.h src/share/vm/runtime/threads/javaThread.cpp src/share/vm/runtime/threads/javaThread.h src/share/vm/runtime/threads/namedThread.cpp src/share/vm/runtime/threads/namedThread.h src/share/vm/runtime/threads/vmThread.cpp src/share/vm/runtime/threads/vmThread.h src/share/vm/runtime/init.cpp src/share/vm/runtime/init.h src/share/vm/memory/universe.cpp src/share/vm/memory/universe.h src/share/vm/gc/shared/collectedHeap.cpp src/share/vm/gc/shared/collectedHeap.h src/share/vm/memory/memRegion.cpp src/share/vm/memory/memRegion.h src/share/vm/runtime/vmStructs.cpp src/share/vm/runtime/vmStructs.h src/share/vm/utilities/exceptions.cpp src/share/vm/utilities/exceptions.h src/share/vm/oops/oop.cpp src/share/vm/oops/oop.h src/share/vm/oops/oopsHierarchy.cpp src/share/vm/oops/oopsHierarchy.h src/share/vm/oops/klass.cpp src/share/vm/oops/klass.h src/share/vm/runtime/handles.cpp src/share/vm/runtime/handles.h src/share/vm/gc/gcCause.cpp src/share/vm/gc/gcCause.h src/share/vm/gc/shared/generation.cpp src/share/vm/gc/shared/generation.h src/share/vm/gc/shared/genCollectedHeap.cpp src/share/vm/gc/shared/genCollectedHeap.h jre/java/lang/jre_object.cpp jre/java/lang/jre_object.h src/share/vm/gc/serial/defNewGeneration.cpp src/share/vm/gc/serial/defNewGeneration.h src/share/vm/gc/serial/tenuredGeneration.cpp src/share/vm/gc/serial/tenuredGeneration.h)
 add_executable(MiniSpot ${SOURCE_FILES})

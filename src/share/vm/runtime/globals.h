@@ -40,6 +40,11 @@
   /* GC flags */                                    \
   develop(bool, UseSerialGC, true,                  \
   "Default serial GC")                              \
+  develop(int, NewSize, 0,                          \
+  "Size of eden in bytes")                          \
+  develop(int, NewSizeInMB, 200,                    \
+  "Size of eden in MB")                             \
+
 
 GENERATE_RUNTIME_FLAGS(DECLARE_DEVELOP_FLAG, DECLARE_DIAGNOSTIC_FLAG)
 

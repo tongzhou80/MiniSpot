@@ -65,5 +65,38 @@ inline size_t pointer_delta(const MetaWord* left, const MetaWord* right) {
 }
 
 
+// Size convert
+inline int BtoW(int Bs) {
+    return Bs/sizeof(HeapWord*);
+}
+
+inline int BtoK(int Bs) {
+    return Bs/1024;
+}
+
+inline int BtoM(int Bs) {
+    return Bs/1024/1024;
+}
+
+inline int WtoB(int Ws) {
+    return Ws*sizeof(HeapWord*);
+}
+
+inline int WtoK(int Ws) {
+    return WtoB(Ws)/1024;
+}
+
+inline int WtoM(int Ws) {
+    return WtoB(Ws)/1024/1024;
+}
+
+inline int MtoB(int Ms) {
+    return Ms*1024*1024;
+}
+
+inline int MtoW(int Ms) {
+    return BtoW(MtoB(Ms));
+}
+
 
 #endif //MINISPOT_GLOBALDEFINITIONS_H
