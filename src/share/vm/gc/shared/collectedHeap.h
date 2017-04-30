@@ -54,49 +54,49 @@ public:
     */
     virtual jint initialize() = 0;
 
-    // In many heaps, there will be a need to perform some initialization activities
-    // after the Universe is fully formed, but before general heap allocation is allowed.
-    // This is the correct place to place such initialization methods.
-    virtual void post_initialize();
-
-    // Stop any onging concurrent work and prepare for exit.
-    virtual void stop() {}
-
-
+//    // In many heaps, there will be a need to perform some initialization activities
+//    // after the Universe is fully formed, but before general heap allocation is allowed.
+//    // This is the correct place to place such initialization methods.
+//    virtual void post_initialize();
+//
+//    // Stop any onging concurrent work and prepare for exit.
+//    virtual void stop() {}
+//
+//
     void initialize_reserved_region(HeapWord *start, HeapWord *end);
     MemRegion reserved_region() const { return _reserved; }
     HeapWord* base() const { return reserved_region().start(); }
-
-    virtual size_t capacity() const = 0;
-
-
-    // Returns "TRUE" if "p" points into the reserved area of the heap.
-    bool is_in_reserved(const void* p) const {
-        return _reserved.contains(p);
-    }
-
-    // Returns "TRUE" iff "p" points into the committed areas of the heap.
-    // This method can be expensive so avoid using it in performance critical
-    // code.
-    virtual bool is_in(const void* p) const = 0;
-
-
-
-    // Do common initializations that must follow instance construction,
-    // for example, those needing virtual calls.
-    // This code could perhaps be moved into initialize() but would
-    // be slightly more awkward because we want the latter to be a
-    // pure virtual.
-    void pre_initialize();
-
-    // Create a new tlab. All TLAB allocations must go through this.
-    virtual HeapWord* allocate_new_tlab(size_t size);
-
-    // Accumulate statistics on all tlabs.
-    virtual void accumulate_statistics_all_tlabs();
-
-    // Reinitialize tlabs before resuming mutators.
-    virtual void resize_all_tlabs();
+//
+//    virtual size_t capacity() const = 0;
+//
+//
+//    // Returns "TRUE" if "p" points into the reserved area of the heap.
+//    bool is_in_reserved(const void* p) const {
+//        return _reserved.contains(p);
+//    }
+//
+//    // Returns "TRUE" iff "p" points into the committed areas of the heap.
+//    // This method can be expensive so avoid using it in performance critical
+//    // code.
+//    virtual bool is_in(const void* p) const = 0;
+//
+//
+//
+//    // Do common initializations that must follow instance construction,
+//    // for example, those needing virtual calls.
+//    // This code could perhaps be moved into initialize() but would
+//    // be slightly more awkward because we want the latter to be a
+//    // pure virtual.
+//    void pre_initialize();
+//
+//    // Create a new tlab. All TLAB allocations must go through this.
+//    virtual HeapWord* allocate_new_tlab(size_t size);
+//
+//    // Accumulate statistics on all tlabs.
+//    virtual void accumulate_statistics_all_tlabs();
+//
+//    // Reinitialize tlabs before resuming mutators.
+//    virtual void resize_all_tlabs();
 
     // Allocate from the current thread's TLAB, with broken-out slow path.
     static HeapWord* allocate_from_tlab(KlassHandle klass, Thread* thread, size_t size);
@@ -164,13 +164,13 @@ public:
 
     // Return "TRUE" iff the given pointer points into the heap's defined
     // closed subset (which defaults to the entire heap).
-    virtual bool is_in_closed_subset(const void* p) const {
-        return is_in_reserved(p);
-    }
-
-    // An object is scavengable if its location may move during a scavenge.
-    // (A scavenge is a GC which is not a full GC.)
-    virtual bool is_scavengable(const void *p) = 0;
+//    virtual bool is_in_closed_subset(const void* p) const {
+//        return is_in_reserved(p);
+//    }
+//
+//    // An object is scavengable if its location may move during a scavenge.
+//    // (A scavenge is a GC which is not a full GC.)
+//    virtual bool is_scavengable(const void *p) = 0;
 
     void set_gc_cause(GCCause::Cause v) {
         _gc_cause = v;
@@ -179,10 +179,10 @@ public:
 
 
     // General obj/array allocation facilities.
-    inline static oop obj_allocate(KlassHandle klass, int size, TRAPS);
-    inline static oop array_allocate(KlassHandle klass, int size, int length, TRAPS);
-    inline static oop array_allocate_nozero(KlassHandle klass, int size, int length, TRAPS);
-    inline static oop class_allocate(KlassHandle klass, int size, TRAPS);
+    static oop obj_allocate(KlassHandle klass, int size, TRAPS);
+    static oop array_allocate(KlassHandle klass, int size, int length, TRAPS);
+    static oop array_allocate_nozero(KlassHandle klass, int size, int length, TRAPS);
+    static oop class_allocate(KlassHandle klass, int size, TRAPS);
 
     // Raw memory allocation facilities
     // The obj and array allocate methods are covers for these methods.
@@ -217,46 +217,46 @@ public:
     // boundaries of the contiguous allocation area.  (These fields should be
     // physically near to one another.)
     virtual HeapWord* volatile* top_addr() const {
-        guarantee(false, "inline contiguous allocation not supported");
+        guarantee(false, "contiguous allocation not supported");
         return NULL;
     }
     virtual HeapWord** end_addr() const {
-        guarantee(false, "inline contiguous allocation not supported");
+        guarantee(false, "contiguous allocation not supported");
         return NULL;
     }
+//
+//    // Some heaps may be in an unparseable state at certain times between
+//    // collections. This may be necessary for efficient implementation of
+//    // certain allocation-related activities. Calling this function before
+//    // attempting to parse a heap ensures that the heap is in a parsable
+//    // state (provided other concurrent activity does not introduce
+//    // unparsability). It is normally expected, therefore, that this
+//    // method is invoked with the world stopped.
+//    // NOTE: if you override this method, make sure you call
+//    // super::ensure_parsability so that the non-generational
+//    // part of the work gets done. See implementation of
+//    // CollectedHeap::ensure_parsability and, for instance,
+//    // that of GenCollectedHeap::ensure_parsability().
+//    // The argument "retire_tlabs" controls whether existing TLABs
+//    // are merely filled or also retired, thus preventing further
+//    // allocation from them and necessitating allocation of new TLABs.
+//    virtual void ensure_parsability(bool retire_tlabs);
+//
+//    // Section on thread-local allocation buffers (TLABs)
+//    // If the heap supports thread-local allocation buffers, it should override
+//    // the following methods:
+//    // Returns "true" iff the heap supports thread-local allocation buffers.
+//    // The default is "no".
+//    virtual bool supports_tlab_allocation() const = 0;
+//
+//
+//    // The amount of space available for thread-local allocation buffers.
+//    virtual size_t tlab_capacity(Thread *thr) const = 0;
+//
+//    // The amount of used space for thread-local allocation buffers for the given thread.
+//    virtual size_t tlab_used(Thread *thr) const = 0;
 
-    // Some heaps may be in an unparseable state at certain times between
-    // collections. This may be necessary for efficient implementation of
-    // certain allocation-related activities. Calling this function before
-    // attempting to parse a heap ensures that the heap is in a parsable
-    // state (provided other concurrent activity does not introduce
-    // unparsability). It is normally expected, therefore, that this
-    // method is invoked with the world stopped.
-    // NOTE: if you override this method, make sure you call
-    // super::ensure_parsability so that the non-generational
-    // part of the work gets done. See implementation of
-    // CollectedHeap::ensure_parsability and, for instance,
-    // that of GenCollectedHeap::ensure_parsability().
-    // The argument "retire_tlabs" controls whether existing TLABs
-    // are merely filled or also retired, thus preventing further
-    // allocation from them and necessitating allocation of new TLABs.
-    virtual void ensure_parsability(bool retire_tlabs);
-
-    // Section on thread-local allocation buffers (TLABs)
-    // If the heap supports thread-local allocation buffers, it should override
-    // the following methods:
-    // Returns "true" iff the heap supports thread-local allocation buffers.
-    // The default is "no".
-    virtual bool supports_tlab_allocation() const = 0;
-
-
-    // The amount of space available for thread-local allocation buffers.
-    virtual size_t tlab_capacity(Thread *thr) const = 0;
-
-    // The amount of used space for thread-local allocation buffers for the given thread.
-    virtual size_t tlab_used(Thread *thr) const = 0;
-
-    virtual size_t max_tlab_size() const;
+    // virtual size_t max_tlab_size() const;
 
     // An estimate of the maximum allocation that could be performed
     // for thread-local allocation buffers without triggering any
@@ -267,19 +267,19 @@ public:
     }
 
 
-    // Perform a collection of the heap; intended for use in implementing
-    // "System.gc".  This probably implies as full a collection as the
-    // "CollectedHeap" supports.
-    virtual void collect(GCCause::Cause cause) = 0;
-
-    // Perform a full collection
-    virtual void do_full_collection(bool clear_all_soft_refs) = 0;
+//    // Perform a collection of the heap; intended for use in implementing
+//    // "System.gc".  This probably implies as full a collection as the
+//    // "CollectedHeap" supports.
+//    virtual void collect(GCCause::Cause cause) = 0;
+//
+//    // Perform a full collection
+//    virtual void do_full_collection(bool clear_all_soft_refs) = 0;
 
     // This interface assumes that it's being called by the
     // vm thread. It collects the heap assuming that the
     // heap lock is already held and that we are executing in
     // the context of the vm thread.
-    virtual void collect_as_vm_thread(GCCause::Cause cause);
+    // virtual void collect_as_vm_thread(GCCause::Cause cause);
 //
 //    // Returns the barrier set for this heap
 //    BarrierSet* barrier_set() { return _barrier_set; }

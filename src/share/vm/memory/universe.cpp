@@ -23,4 +23,5 @@ jint Universe::create_heap() {
     if (UseSerialGC) {
         _collectedHeap = new GenCollectedHeap();
     }
+    _collectedHeap->initialize();
 }

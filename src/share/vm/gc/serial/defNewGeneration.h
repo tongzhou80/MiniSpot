@@ -5,7 +5,10 @@
 #ifndef MINISPOT_DEFNEWGENERATION_H
 #define MINISPOT_DEFNEWGENERATION_H
 
-class DefNewGeneration {
+
+#include <gc/shared/generation.h>
+
+class DefNewGeneration : public Generation {
 
 };
 

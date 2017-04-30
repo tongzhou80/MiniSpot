@@ -3,3 +3,4 @@
 //
 
 #include "defNewGeneration.h"
+#include "gc/shared/generation.h"

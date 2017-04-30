@@ -3,3 +3,5 @@
 //
 
 #include "tenuredGeneration.h"
+#include "gc/shared/generation.h"
+

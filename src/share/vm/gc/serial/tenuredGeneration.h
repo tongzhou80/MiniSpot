@@ -6,7 +6,9 @@
 #define MINISPOT_TENUREDGENERATION_H
 
 
-class TenuredGeneration {
+#include <gc/shared/generation.h>
+
+class TenuredGeneration : public Generation {
 
 };
 
