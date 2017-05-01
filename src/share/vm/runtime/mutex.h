@@ -48,7 +48,7 @@ public:
         _mutex = m;
         _mutex->lock();
     }
-    ~MutexLock()  {
+    ~MutexLocker()  {
         _mutex->unlock();
     }
 };

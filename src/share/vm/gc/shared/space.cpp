@@ -11,7 +11,7 @@ Space::Space() {
     _bottom = NULL;
     _top = NULL;
     _bottom = NULL;
-    _size = NULL;
+    _size = 0;
     _full = NULL;
 }
 
@@ -23,33 +23,24 @@ Space::Space(HeapWord *start, int word_size) {
     _full = false;
 }
 
+void Space::print(int level) {
+
+}
+
 
 ContiguousSpace::ContiguousSpace(HeapWord *start, int word_size) : Space(start, word_size) {
 
 }
 
-HeapWord* ContiguousSpace::cas_allocate(int size) {
+/* This function changes top() of the heap, so a Heap_lock is needed */
+HeapWord* ContiguousSpace::allocate(int size) {
+    HeapWord* result = NULL;
     {
-        MutexLocker ml;
-    }
-
-
-    HeapWord* last_top = top();
-    do {
-        HeapWord* obj = top();
-        if (::pointer_delta(end(), obj, sizeof(HeapWord*)) >= size) {
-            HeapWord* new_top = obj + size;
-            HeapWord* result = (HeapWord*)Atomic::cmpxchg_ptr(new_top, top_addr(), obj);
-            // result can be one of two:
-            //  the old top value: the exchange succeeded                                                                                                                                                                      //  otherwise: the new value of the top is returned.                                                                                                                                                               if (result != obj) {
-            continue; // another thread beat us to the allocation, try again                                                                                                                                                 }
-            assert(is_object_aligned((intptr_t)obj) && is_object_aligned((intptr_t)new_top),
-                   "checking alignment");
-
-            return obj;
-        } else {
-            _full = true;
-            return NULL;
+        MutexLocker ml(Locks::Heap_lock);
+        if (left() >= size) {
+            result = top();
+            set_top(top()+size);
         }
-    } while (true);
+    }
+    return result;
 }

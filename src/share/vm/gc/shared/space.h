@@ -36,6 +36,7 @@ public:
     HeapWord** end_addr()                    { return &_end; }
     int used_in_words()                      { return ::pointer_delta(top(), bottom(), sizeof(HeapWord*)); }
     int used_in_MB()                         { return WtoM(used_in_words()); }
+    int left()                               { return ::pointer_delta(end(), top(), sizeof(HeapWord*)); }
     bool contains(const void* p) const       { return _bottom <= p && p < _end; }
     bool full()                              { return _full; }
     void set_full(bool is_full)              { _full = is_full; }
@@ -45,7 +46,7 @@ public:
 class ContiguousSpace : public Space {
 public:
     ContiguousSpace(HeapWord* start, int word_size);
-    HeapWord* cas_allocate(int size);
+    HeapWord* allocate(int size);
 };
 
 #endif //MINISPOT_SPACE_H
