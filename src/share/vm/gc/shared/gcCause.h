@@ -16,7 +16,7 @@
 // with the definitions here.
 //
 
-#include "../utilities/debug.h"
+#include "utilities/debug.h"
 
 class GCCause {
 public:

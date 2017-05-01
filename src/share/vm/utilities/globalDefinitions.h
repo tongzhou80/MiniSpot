@@ -65,6 +65,52 @@ inline size_t pointer_delta(const MetaWord* left, const MetaWord* right) {
 }
 
 
+// Signed variants of alignment helpers.  There are two versions of each, a macro                                                                                                                                  // for use in places like enum definitions that require compile-time constant
+// expressions and a function for all other places so as to get type checking.
+#define align_size_up_(size, alignment) (((size) + ((alignment) - 1)) & ~((alignment) - 1))
+
+inline bool is_size_aligned(size_t size, size_t alignment) {
+    return align_size_up_(size, alignment) == size;
+}
+
+inline bool is_ptr_aligned(void* ptr, size_t alignment) {
+    return align_size_up_((intptr_t)ptr, (intptr_t)alignment) == (intptr_t)ptr;
+}
+
+inline intptr_t align_size_up(intptr_t size, intptr_t alignment) {
+    return align_size_up_(size, alignment);
+}
+
+#define align_size_down_(size, alignment) ((size) & ~((alignment) - 1))
+
+inline intptr_t align_size_down(intptr_t size, intptr_t alignment) {
+    return align_size_down_(size, alignment);
+}
+
+#define is_size_aligned_(size, alignment) ((size) == (align_size_up_(size, alignment)))
+
+inline void* align_ptr_up(void* ptr, size_t alignment) {
+    return (void*)align_size_up((intptr_t)ptr, (intptr_t)alignment);
+}
+
+inline void* align_ptr_down(void* ptr, size_t alignment) {
+    return (void*)align_size_down((intptr_t)ptr, (intptr_t)alignment);
+}
+
+// Align objects by rounding up their size, in HeapWord units.
+
+#define align_object_size_(size) align_size_up_(size, MinObjAlignment)
+
+inline intptr_t align_object_size(intptr_t size) {
+    return align_size_up(size, sizeof(HeapWord*));
+}
+
+inline bool is_object_aligned(intptr_t addr) {
+    return addr == align_object_size(addr);
+}
+
+
+
 // Size convert
 inline int BtoW(int Bs) {
     return Bs/sizeof(HeapWord*);

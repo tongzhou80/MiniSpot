@@ -15,7 +15,7 @@
 #include "../../runtime/handles.h"
 #include "../../prims/jni.h"
 #include "../../oops/oop.h"
-#include "../gcCause.h"
+#include "gcCause.h"
 
 
 //
