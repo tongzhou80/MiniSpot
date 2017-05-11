@@ -37,11 +37,13 @@ static void *java_start(Thread *thread) {
 
     // handshaking with parent thread
     {
-        pthread_mutex_lock(sync->mutex());
+        sync->lock();
         // notify parent thread
         osthread->set_state(OSThread::INITIALIZED);
-        pthread_cond_broadcast(sync->cond()); // notify should be enough, but broadcast just in case
-        pthread_mutex_unlock(sync->mutex());
+        sync->signal_all();
+        sync->unlock();
+        //pthread_cond_broadcast(sync->cond()); // notify should be enough, but broadcast just in case
+        //pthread_mutex_unlock(sync->mutex());
     }
 
     // wait until os::start_thread()
@@ -49,7 +51,8 @@ static void *java_start(Thread *thread) {
         printf("thread " PID_FORMAT " has initialized, wait until os::start_thread()\n", osthread->pthread_id());
     }
     while (osthread->get_state() == OSThread::INITIALIZED) {
-        pthread_cond_wait(sync->cond(), sync->mutex());
+        sync->wait();
+        //pthread_cond_wait(sync->cond(), sync->mutex());
     }
 
 
@@ -96,11 +99,14 @@ bool os::create_thread(Thread* thread, ThreadType threadType, int stack_size) {
     /* the curly bracket is not necessary(as it is in HotSpot's code), just to make critical clearer */
     {
         Monitor* sync_with_child = osthread->startThread_lock();
-        pthread_mutex_lock(sync_with_child->mutex());
+        sync_with_child->lock();
+        //pthread_mutex_lock(sync_with_child->mutex());
         while (osthread->get_state() == OSThread::ALLOCATED) {
-            pthread_cond_wait(sync_with_child->cond(), sync_with_child->mutex());
+            sync_with_child->wait();
+            //pthread_cond_wait(sync_with_child->cond(), sync_with_child->mutex());
         }
-        pthread_mutex_unlock(osthread->startThread_lock()->mutex());
+        sync_with_child->unlock();
+        //pthread_mutex_unlock(osthread->startThread_lock()->mutex());
 
     }
 
@@ -131,10 +137,13 @@ void os::start_thread(Thread *thread) {
     OSThread* osthread = thread->osthread();
     Monitor* sync_with_child = osthread->startThread_lock();
     {
-        pthread_mutex_lock(sync_with_child->mutex());
+        sync_with_child->lock();
+        //pthread_mutex_lock(sync_with_child->mutex());
         osthread->set_state(OSThread::RUNNABLE);
-        pthread_cond_signal(sync_with_child->cond());
-        pthread_mutex_unlock(sync_with_child->mutex());
+        sync_with_child->signal();
+        //pthread_cond_signal(sync_with_child->cond());
+        sync_with_child->unlock();
+        //pthread_mutex_unlock(sync_with_child->mutex());
     }
 }
 
