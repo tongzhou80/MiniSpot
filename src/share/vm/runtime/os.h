@@ -7,11 +7,10 @@
 
 #include <sys/types.h>
 
+typedef pthread_t thread_id_t;
+
 class OSThread;
 class Thread;
-
-
-
 
 
 class os {
@@ -47,10 +46,12 @@ public:
     static void start_thread(Thread*);
     static bool create_thread(Thread*, ThreadType, int stack_size=0);
 
-#ifdef __linux__
-public:
-    static pid_t gettid();
-#endif
+    // do not use a system-specific thread id to make cross-platform easier
+    static thread_id_t gettid();
+//#ifdef __linux__
+//public:
+//    static pid_t gettid();
+//#endif
 };
 
 #endif //MINISPOT_OS_H

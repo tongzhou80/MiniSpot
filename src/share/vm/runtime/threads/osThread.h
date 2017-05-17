@@ -15,16 +15,12 @@
 // Note: the ThreadState is legacy code and is not correctly implemented.
 // Uses of ThreadState need to be replaced by the state in the JavaThread.
 
-#include "../../prims/jni.h"
-#include "../../utilities/globalDefinitions.h"
+#include "prims/jni.h"
+#include "utilities/globalDefinitions.h"
 #include "../os.h"
 
-
-#ifdef __linux__
 #include <pthread.h>
 
-typedef pid_t thread_id_t;
-#endif
 
 class Monitor;
 
@@ -46,7 +42,7 @@ public:
         ZOMBIE                        // All done, but not reclaimed yet
     };
 
-#ifdef __linux__
+#ifdef PTHREAD_OKAY
 private:
     pthread_t _pthread_id;
     Monitor* _startThread_lock;     // sync parent and child in thread creation
@@ -59,7 +55,7 @@ public:
 
 
 private:
-    thread_id_t _thread_id;
+    thread_id_t _thread_id;         // Same as _pthread_id now
     OSThreadStartFunc _start_proc;  // Thread start routine
     void *_start_parm;              // Thread start routine parameter
     ThreadState _state;    // Thread state *hint*

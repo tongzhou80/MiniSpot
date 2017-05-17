@@ -7,8 +7,9 @@
 
 #include <iostream>
 #include <map>
-#include "../../utilities/debug.h"
-#include "../../prims/jni.h"
+#include "utilities/debug.h"
+#include "prims/jni.h"
+#include "utilities/globalDefinitions.h"
 
 class OSThread;
 
@@ -70,7 +71,7 @@ public:
 class JavaThread;
 
 class Threads {
-#ifdef __linux__
+#ifdef PTHREAD_OKAY
 private:
     static std::map<pthread_t, Thread*> _threads_table; /* for current() */
 public:

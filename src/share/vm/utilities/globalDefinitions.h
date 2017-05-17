@@ -11,6 +11,11 @@
 
 #define PID_FORMAT "%lld"
 
+#if defined(__linux__) || defined(__CYGWIN__)
+#define PTHREAD_OKAY
+#define POSIX_ENV
+#endif
+
 typedef int (*OSThreadStartFunc)(void*);
 
 // An opaque struct of heap-word width, so that HeapWord* can be a generic

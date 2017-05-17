@@ -8,21 +8,25 @@
 #include "threads/osThread.h"
 #include "globals.h"
 
-#ifdef __linux__
 
-#include <sys/syscall.h>
+//
+//#include <sys/syscall.h>
+
 #include <unistd.h>
 #include "mutex.h"
+#include "runtime/threads/osThread.h"
 
 /* For some reason, gettid is not implemented in glibc */
-pid_t os::gettid() {
-    int rslt = syscall(SYS_gettid);
-    assert(rslt != -1, "must be.");
-    return (pid_t)rslt;
-
-    /* or */
-    return syscall( __NR_gettid );
+thread_id_t os::gettid() {
+//    int rslt = syscall(SYS_gettid);
+//    assert(rslt != -1, "must be.");
+//    return (pid_t)rslt;
+//
+//    /* or */
+//    return syscall( __NR_gettid );
+    return pthread_self();
 }
+
 
 //////////////////////////////////////////////////////////////////////////////
 // create new thread
@@ -146,5 +150,3 @@ void os::start_thread(Thread *thread) {
         //pthread_mutex_unlock(sync_with_child->mutex());
     }
 }
-
-#endif

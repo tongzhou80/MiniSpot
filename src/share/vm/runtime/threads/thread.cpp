@@ -10,7 +10,7 @@
 #include "../init.h"
 
 // Threads
-#ifdef __linux__
+#ifdef PTHREAD_OKAY
 std::map<pthread_t, Thread*> Threads::_threads_table;
 
 void Threads::register_thread(Thread * thread) {
@@ -68,7 +68,7 @@ void Thread::run() {
 }
 
 
-#ifdef __linux__
+#ifdef PTHREAD_OKAY
 
 Thread* Thread::current() {
     Thread* thread = Threads::get_pthread_by_id(pthread_self());
