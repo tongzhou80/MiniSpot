@@ -13,13 +13,16 @@
 // use "Foo* foo;", create a function init_foo() in foo.c, and add a call
 // to init_foo in init.cpp.
 
-#include "../prims/jni.h"
+#include "prims/jni.h"
 
 class init {
 public:
     static jint init_globals();     // call constructors at startup (main Java thread)
     static void vm_init_globals();  // call constructors at startup (VM thread)
     static void exit_globals();     // call destructors before exit
+
+    // my
+    static void load_essential_classes();
 
     static bool is_init_completed();     // returns true when bootstrapping has completed
     static void set_init_completed();    // set basic init to completed

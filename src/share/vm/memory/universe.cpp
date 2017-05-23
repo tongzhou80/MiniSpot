@@ -10,7 +10,7 @@
 CollectedHeap* Universe::_collectedHeap = NULL;
 
 
-jint Universe::universe_init() {
+jint Universe::init() {
     initialize_heap();
 }
 

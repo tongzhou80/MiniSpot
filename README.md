@@ -1,4 +1,5 @@
-This project is out of personal interest and is currently under active development.
+This project is out of personal interest and is currently under active development. The documentation is moving to [GitBook](https://runjvm.gitbooks.io/minispot/content/), this page is
+no longer updated.
 
 ## Table of Contents
 - [Introduction](#introduction)

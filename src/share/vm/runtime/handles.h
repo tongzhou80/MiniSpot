@@ -6,31 +6,34 @@
 #define MINISPOT_HANDLES_H
 
 
+#include <oops/klass.h>
+#include <oops/instanceKlass.h>
 #include "../utilities/debug.h"
 
-class Klass;
-class Thread;
 
-class KlassHandle {
-    Klass* _value;
-protected:
-    Klass* obj() const          { return _value; }
-    Klass* non_null_obj() const { assert(_value != NULL, "resolving NULL _value"); return _value; }
+typedef Klass* KlassHandle;
+typedef InstanceKlass* instanceKlassHandle;
 
-public:
-    KlassHandle()                                 : _value(NULL) {}
-    KlassHandle(const Klass* obj)                 : _value(const_cast<Klass *>(obj)) {};
-    KlassHandle(Thread* thread, const Klass* obj) : _value(const_cast<Klass *>(obj)) {};
-
-    Klass* operator () () const { return obj(); }
-    Klass* operator -> () const { return non_null_obj(); }
-
-    bool operator == (Klass* o) const             { return obj() == o; }
-    bool operator == (const KlassHandle& h) const { return obj() == h.obj(); }
-
-    bool is_null() const  { return _value == NULL; }
-    bool not_null() const { return _value != NULL; }
-};
+//class KlassHandle {
+//    Klass* _value;
+//protected:
+//    Klass* obj() const          { return _value; }
+//    Klass* non_null_obj() const { assert(_value != NULL, "resolving NULL _value"); return _value; }
+//
+//public:
+//    KlassHandle()                                 : _value(NULL) {}
+//    KlassHandle(const Klass* obj)                 : _value(const_cast<Klass *>(obj)) {};
+//    KlassHandle(Thread* thread, const Klass* obj) : _value(const_cast<Klass *>(obj)) {};
+//
+//    Klass* operator () () const { return obj(); }
+//    Klass* operator -> () const { return non_null_obj(); }
+//
+//    bool operator == (Klass* o) const             { return obj() == o; }
+//    bool operator == (const KlassHandle& h) const { return obj() == h.obj(); }
+//
+//    bool is_null() const  { return _value == NULL; }
+//    bool not_null() const { return _value != NULL; }
+//};
 
 //
 //class instanceKlassHandle : public KlassHandle {

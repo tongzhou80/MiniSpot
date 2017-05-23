@@ -15,10 +15,9 @@
 
 
 /* Use short name (develop, etc) instead of the long macro name */
-#define GENERATE_RUNTIME_FLAGS(develop, diagnostic) \
+#define GENERATE_RUNTIME_FLAGS(product, develop, diagnostic, iteration) \
   develop(bool, Debugging, false,                   \
          "")                                        \
-                                                    \
   develop(bool, PrintConstantPool, true,            \
          "")                                        \
   develop(bool, PrintDisassembled, true,            \
@@ -37,6 +36,8 @@
          "")                                        \
   diagnostic(bool, PrintThreadCreation, true,       \
          "")                                        \
+  iteration(bool, OnlyUseBootLoader, true,          \
+         "")                                        \
   /* GC flags */                                    \
   develop(bool, UseSerialGC, true,                  \
   "Default serial GC")                              \
@@ -46,7 +47,7 @@
   "Size of eden in MB")                             \
 
 
-GENERATE_RUNTIME_FLAGS(DECLARE_DEVELOP_FLAG, DECLARE_DIAGNOSTIC_FLAG)
+GENERATE_RUNTIME_FLAGS(DECLARE_DEVELOP_FLAG, DECLARE_DIAGNOSTIC_FLAG, DECLARE_DEVELOP_FLAG, DECLARE_DIAGNOSTIC_FLAG)
 
 
 

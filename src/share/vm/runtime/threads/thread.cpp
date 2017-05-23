@@ -31,7 +31,7 @@ jint Threads::create_vm(JavaVMInitArgs *args, bool *canTryAgain) {
     main_thread->set_thread_state(JavaThread::_thread_in_vm);
     Threads::add(main_thread);
 
-    // Initialize global modules
+    // Initialize global modules such as heap
     jint status = init::init_globals();
 
     VMThread::create();

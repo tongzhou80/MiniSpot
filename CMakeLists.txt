@@ -2,7 +2,8 @@ cmake_minimum_required(VERSION 3.5)
 project(MiniSpot)
 
 include_directories(src/share/vm)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -lpthread")
+SET(GCC_COMPILE_FLAGS "-std=c++11 -lpthread -g -rdynamic")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GCC_COMPILE_FLAGS}")
 
 set(SOURCE_FILES
         main.cpp
@@ -34,5 +35,5 @@ set(SOURCE_FILES
         src/share/vm/gc/serial/defNewGeneration.cpp src/share/vm/gc/serial/defNewGeneration.h
         src/share/vm/gc/serial/tenuredGeneration.cpp src/share/vm/gc/serial/tenuredGeneration.h
         src/share/vm/gc/shared/space.cpp src/share/vm/gc/shared/space.h
-        src/share/vm/runtime/atomic.cpp src/share/vm/runtime/atomic.h)
+        src/share/vm/runtime/atomic.cpp src/share/vm/runtime/atomic.h src/share/vm/classfile/classFileParser.cpp src/share/vm/classfile/classFileParser.h src/share/vm/utilities/vmError.cpp src/share/vm/utilities/vmError.h src/share/vm/classfile/classLoader.cpp src/share/vm/classfile/classLoader.h src/share/vm/oops/instanceKlass.cpp src/share/vm/oops/instanceKlass.h src/share/vm/runtime/symbol.cpp src/share/vm/runtime/symbol.h)
 add_executable(MiniSpot ${SOURCE_FILES})
