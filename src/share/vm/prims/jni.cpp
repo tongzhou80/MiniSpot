@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <utilities/ostream.h>
 #include "jni.h"
 #include "../utilities/debug.h"
 #include "../runtime/threads/thread.h"
@@ -58,3 +59,32 @@ jint JNI_CreateJavaVM(JavaVM **p_vm, void **p_env, void *vm_args) {
 //    //vm->spawnExecThread();
 //    return vm;
 //}
+
+jint jni_GetVersion(JNIEnv* env) {
+    return (jint)1;
+}
+
+jclass jni_FindClass(JNIEnv *env, const char *name) {
+    InstanceKlass* calling_class = JavaThread::current()->caller_class();
+    if (calling_class) {
+        Loggers::todo << "todo: load a class in another class" << std::endl;
+    }
+    else {
+        
+    }
+}
+
+
+// Structure containing all jni functions
+struct JNINativeInterface_ jni_NativeInterface = {
+        NULL,
+        NULL,
+        NULL,
+
+        NULL,
+
+        jni_GetVersion,
+
+        //jni_DefineClass,
+        jni_FindClass
+}

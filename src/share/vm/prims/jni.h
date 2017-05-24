@@ -86,17 +86,17 @@ struct JNINativeInterface_ {
     jclass (JNICALL *FindClass)
             (JNIEnv *env, const char *name);
 
-    jmethodID (JNICALL *GetMethodID)
-            (JNIEnv *env, jclass clazz, const char *name, const char *sig);
-
-    jmethodID (JNICALL *GetStaticMethodID)
-            (JNIEnv *env, jclass clazz, const char *name, const char *sig);
-
-    void (JNICALL *CallStaticVoidMethod)
-            (JNIEnv *env, jclass cls, jmethodID methodID, ...);
-
-    void (JNICALL *CallStaticVoidMethodV)
-            (JNIEnv *env, jclass cls, jmethodID methodID, va_list args);
+//    jmethodID (JNICALL *GetMethodID)
+//            (JNIEnv *env, jclass clazz, const char *name, const char *sig);
+//
+//    jmethodID (JNICALL *GetStaticMethodID)
+//            (JNIEnv *env, jclass clazz, const char *name, const char *sig);
+//
+//    void (JNICALL *CallStaticVoidMethod)
+//            (JNIEnv *env, jclass cls, jmethodID methodID, ...);
+//
+//    void (JNICALL *CallStaticVoidMethodV)
+//            (JNIEnv *env, jclass cls, jmethodID methodID, va_list args);
 
     /* and other methods */
 };

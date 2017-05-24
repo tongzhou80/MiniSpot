@@ -6,6 +6,7 @@
 #define MINISPOT_JAVATHREAD_H
 
 
+#include <runtime/handles.h>
 #include "../../prims/jni.h"
 #include "thread.h"
 
@@ -46,11 +47,22 @@ public:
 
     //friend class VMStructs;
 private:
+    JavaThread();
+    JavaThread(bool is_attaching_via_jni);
+    void initialize();
     JavaThread *_next;                          // The next thread in the Threads list
     //oop            _threadObj;                     // The Java level thread object
     JavaThreadState _thread_state;
     JNIEnv        _jni_environment;
+    bool _jni_attach_state;
+
+    InstanceKlass* _caller_class;
 public:
+    enum JNIAttachStates {
+        _not_attaching_via_jni = 1,  // thread is not attaching via JNI
+        _attaching_via_jni,          // thread is attaching via JNI
+        _attached_via_jni            // thread has attached via JNI
+    };
     void set_next(JavaThread* next)  { _next = next;}
     JavaThreadState thread_state() const           { return _thread_state; }
     void set_thread_state(JavaThreadState s)       { _thread_state = s;    }
@@ -58,6 +70,7 @@ public:
     bool has_pending_exception();
 
     JNIEnv* jni_environment()                      { return &_jni_environment; }
+    InstanceKlass* caller_class()                  { return _caller_class; }
 
     /* Static */
     // Returns the running thread as a JavaThread
