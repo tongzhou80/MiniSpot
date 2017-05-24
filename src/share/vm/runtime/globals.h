@@ -36,6 +36,8 @@
          "")                                        \
   diagnostic(bool, PrintThreadCreation, true,       \
          "")                                        \
+  diagnostic(bool, PrintInitialization, true,       \
+         "")                                        \
   iteration(bool, OnlyUseBootLoader, true,          \
          "")                                        \
   /* GC flags */                                    \

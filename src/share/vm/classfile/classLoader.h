@@ -14,7 +14,8 @@
 /* the bootstrap classloader */
 class ClassLoader {
 private:
-    std::vector<std::string> _search_path;
+    std::vector<std::string> _boot_search_path;
+    std::vector<std::string> _app_search_path;
 public:
     static ClassLoader* boot_loader;
     static void init();
@@ -23,7 +24,9 @@ public:
     ClassLoader();
 
 
-    instanceKlassHandle load_classfile(Symbol* h_name, TRAPS);
+    //instanceKlassHandle load_classfile(Symbol* h_name, TRAPS);
+    instanceKlassHandle load_classfile(std::string name, TRAPS);
+    instanceKlassHandle load_app_class(std::string name, TRAPS);
 };
 
 #endif //MINISPOT_CLASSLOADER_H
