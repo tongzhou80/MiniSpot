@@ -67,10 +67,10 @@ jint jni_GetVersion(JNIEnv* env) {
 jclass jni_FindClass(JNIEnv *env, const char *name) {
     InstanceKlass* calling_class = JavaThread::current()->caller_class();
     if (calling_class) {
-        Loggers::todo << "todo: load a class in another class" << std::endl;
+        Loggers::todo << "todo: jni_FindClass needs to use caller class's loader to load the callee class" << std::endl;
     }
     else {
-        
+
     }
 }
 

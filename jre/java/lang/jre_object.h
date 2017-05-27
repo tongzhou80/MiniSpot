@@ -9,6 +9,11 @@
 #include <string>
 #include "prims/jni.h"
 
+// They should have all the information parsed from the class file
+// so that these class can be directly used as class metadata and
+// also provide public interface of the corresponding class as well
+
+/* represent fields and method */
 struct JREFieldDesc {
     std::string descriptor;
     std::vector<std::string> flags;
