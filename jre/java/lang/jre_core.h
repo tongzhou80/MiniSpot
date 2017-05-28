@@ -6,5 +6,6 @@
 #define MINISPOT_JRE_CORE_H
 
 #include "jre_object.h"
+#include "jre_class.h"
 
 #endif //MINISPOT_JRE_CORE_H

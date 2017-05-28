@@ -13,6 +13,7 @@
 
 typedef Klass* KlassHandle;
 typedef InstanceKlass* instanceKlassHandle;
+typedef oop* Handle;
 
 //class KlassHandle {
 //    Klass* _value;

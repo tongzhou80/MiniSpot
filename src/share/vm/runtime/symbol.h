@@ -5,8 +5,17 @@
 #ifndef MINISPOT_SYMBOL_H
 #define MINISPOT_SYMBOL_H
 
-class Symbol {
+#include <string>
 
+class Symbol {
+private:
+    std::string _str;
+public:
+    Symbol();
+    Symbol(const char*);
+    Symbol& operator=(std::string s);
+    Symbol& operator=(const char* s);
+    std::string str() { return _str; }
 };
 
 #endif //MINISPOT_SYMBOL_H

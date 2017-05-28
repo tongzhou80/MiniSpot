@@ -3,3 +3,20 @@
 //
 
 #include "symbol.h"
+
+Symbol::Symbol() {
+
+}
+
+Symbol& Symbol::operator=(std::string s) {
+    _str = s;
+}
+
+Symbol& Symbol::operator=(const char *s) {
+    _str = s;
+}
+
+Symbol::Symbol(const char * name) {
+    _str = name;
+}
+

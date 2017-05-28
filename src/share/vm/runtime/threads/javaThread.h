@@ -47,9 +47,6 @@ public:
 
     //friend class VMStructs;
 private:
-    JavaThread();
-    JavaThread(bool is_attaching_via_jni);
-    void initialize();
     JavaThread *_next;                          // The next thread in the Threads list
     //oop            _threadObj;                     // The Java level thread object
     JavaThreadState _thread_state;
@@ -58,6 +55,10 @@ private:
 
     InstanceKlass* _caller_class;
 public:
+    JavaThread();
+    JavaThread(bool is_attaching_via_jni);
+    void initialize();
+
     enum JNIAttachStates {
         _not_attaching_via_jni = 1,  // thread is not attaching via JNI
         _attaching_via_jni,          // thread is attaching via JNI
