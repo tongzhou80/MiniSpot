@@ -26,7 +26,7 @@ Klass* SystemDictionary::resolve_or_fail(Symbol& name, Handle loader) {
         return ld->get_class(name.str());
     }
 
-    return ld->load_app_class(name.str());
+    return ld->load_app_class(name);
     /* Use boot loader for now */
 }
 

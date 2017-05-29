@@ -10,13 +10,13 @@
 #include "../init.h"
 
 // Threads
-#ifdef PTHREAD_OKAY
+//#ifdef PTHREAD_OKAY  // pthread is assumed
 std::map<pthread_t, Thread*> Threads::_threads_table;
 
 void Threads::register_thread(Thread * thread) {
     _threads_table[thread->osthread()->pthread_id()] = thread;
 }
-#endif
+//#endif
 
 JavaThread* Threads::_thread_list = NULL;
 int Threads::_number_of_threads = 0;
@@ -70,7 +70,7 @@ Thread::~Thread() {
 }
 
 void Thread::run() {
-    ZPPL("I am running");
+    ZPPL("Children threads must override run()");
 }
 
 bool Thread::set_as_starting_thread() {
@@ -79,7 +79,7 @@ bool Thread::set_as_starting_thread() {
 }
 
 
-#ifdef PTHREAD_OKAY
+//#ifdef PTHREAD_OKAY
 Thread* Threads::get_pthread_by_id(pthread_t id) {
     if (_threads_table.find(id) == _threads_table.end()) {
         return NULL;
@@ -96,4 +96,4 @@ Thread* Thread::current() {
 }
 
 
-#endif
+//#endif

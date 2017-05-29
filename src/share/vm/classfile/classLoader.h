@@ -8,6 +8,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include "classfile/classFile.h"
 #include "utilities/exceptions.h"
 #include "runtime/handles.h"
 #include "runtime/symbol.h"
@@ -18,6 +19,7 @@ private:
     std::vector<std::string> _boot_search_path;
     std::vector<std::string> _app_search_path;
     std::map<std::string, InstanceKlass*> _loaded_klasses;
+    ClassFileParser parser;
 public:
     static ClassLoader* boot_loader;
     static void init();
@@ -27,8 +29,8 @@ public:
 
 
     //instanceKlassHandle load_classfile(Symbol* h_name, TRAPS);
-    instanceKlassHandle load_classfile(std::string name);
-    instanceKlassHandle load_app_class(std::string name);
+    instanceKlassHandle load_classfile(Symbol& name);
+    instanceKlassHandle load_app_class(Symbol& name);
     bool is_loaded(std::string key);
     InstanceKlass* get_class(std::string);
 };

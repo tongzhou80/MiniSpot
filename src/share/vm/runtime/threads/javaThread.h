@@ -47,11 +47,11 @@ public:
 
     //friend class VMStructs;
 private:
-    JavaThread *_next;                          // The next thread in the Threads list
-    //oop            _threadObj;                     // The Java level thread object
+    JavaThread *    _next;                          // The next thread in the Threads list
+    //oop           _threadObj;                     // The Java level thread object
     JavaThreadState _thread_state;
-    JNIEnv        _jni_environment;
-    bool _jni_attach_state;
+    JNIEnv          _jni_environment;
+    bool            _jni_attach_state;
 
     InstanceKlass* _caller_class;
 public:

@@ -3,6 +3,7 @@
 //
 
 #include "classfile/classLoader.h"
+#include "classFile/classFile.h"
 #include "runtime/globals.h"
 #include "utilities/ostream.h"
 #include "classfile/systemDictionary.h"
@@ -24,12 +25,20 @@ ClassLoader::ClassLoader() {
     }
 }
 
-instanceKlassHandle ClassLoader::load_classfile(std::string name) {
+instanceKlassHandle ClassLoader::load_classfile(Symbol& name) {
 
 }
 
-instanceKlassHandle ClassLoader::load_app_class(std::string name) {
-    printf("should load %s", name.c_str());
+instanceKlassHandle ClassLoader::load_app_class(Symbol& name) {
+    for (auto path: _app_search_path) {
+        auto fullpath = name.prepend(path).str();
+        printf("should load %s", fullpath.c_str());
+        ClassFile* classfile = parser.parse_from_file(fullpath);
+        if (classfile) {
+
+        }
+    }
+
     return NULL;
 }
 

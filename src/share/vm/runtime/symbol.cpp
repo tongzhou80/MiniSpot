@@ -20,3 +20,12 @@ Symbol::Symbol(const char * name) {
     _str = name;
 }
 
+Symbol& Symbol::prepend(std::string pre) {
+    _str = pre + _str;
+    return *this;
+}
+
+Symbol& Symbol::append(std::string ap) {
+    _str += ap;
+    return *this;
+}

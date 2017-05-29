@@ -17,9 +17,9 @@
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/threads/vmThread.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/threads/thread.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/threads/thread.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/threads/osThread.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/threads/vmThread.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/threads/javaThread.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/threads/vmThread.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/threads/osThread.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/threads/javaThread.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/threads/osThread.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/runtime/threads/namedThread.h" isTestSource="false" />
@@ -37,13 +37,15 @@
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/utilities/globalDefinitions.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/utilities/vmError.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/utilities/debug.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/utilities/sysUtil.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/utilities/ostream.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/utilities/sysUtil.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/utilities/ostream.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/utilities/globalDefinitions.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/prims/jvm.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/prims/jvm.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/prims/jni.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/prims/jni.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/prims/jvm.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/gc/shared/genCollectedHeap.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/gc/shared/gcCause.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/gc/shared/genCollectedHeap.h" isTestSource="false" />
@@ -70,11 +72,13 @@
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/memory/universe.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/memory/memRegion.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/memory/memRegion.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/classfile/classFile.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/classfile/systemDictionary.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/classfile/classFileParser.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/classfile/systemDictionary.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/classfile/classLoader.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/classfile/classLoader.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/classfile/classFile.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/classfile/systemDictionary.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/classfile/classFileParser.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/classfile/classLoader.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/classfile/classFileParser.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/jre/java/lang/jre_object.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/jre/java/lang/jre_class.cpp" isTestSource="false" />

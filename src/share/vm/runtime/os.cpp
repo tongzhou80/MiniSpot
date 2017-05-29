@@ -166,10 +166,6 @@ bool os::create_attached_thread(JavaThread* thread) {
 
     OSThread *osthread = new OSThread(NULL, NULL);
 
-    if (osthread == NULL) {
-        return false;
-    }
-
     // Store pthread info into the OSThread
     osthread->set_thread_id(os::gettid());
     osthread->set_pthread_id(pthread_self());
@@ -178,6 +174,6 @@ bool os::create_attached_thread(JavaThread* thread) {
     osthread->set_state(OSThread::RUNNABLE);
 
     thread->set_osthread(osthread);
-    Threads::register_thread(thread);
+    Threads::register_thread(thread); // make it findable by Thread::current()
     return true;
 }

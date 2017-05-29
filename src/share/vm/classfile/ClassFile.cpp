@@ -7,7 +7,9 @@
 #include <cstring>
 #include <vector>
 #include <assert.h>
-#include "ClassFile.h"
+#include <iomanip>
+#include "classFile.h"
+#include "utilities/sysUtil.h"
 
 
 
@@ -682,7 +684,7 @@ std::vector<Bytecode*> ClassFileParser::parseBytecode(u1 * code, int len) {
         p += sizeof(char);
         JBCMeta* meta = SysUtil::bcdict[opcode];
         Bytecode* newbc = new Bytecode(meta);
-        newbc->set_args_(code);
+        newbc->set_ args_(code);
 
         p += meta->arg_len;
 

@@ -30,7 +30,6 @@ public:
     static bool init();
     static bool initialize_system_properties();
 
-    static bool load_main_class();
     static Klass* resolve_or_fail(Symbol& name, Handle loader);
     static SystemProperty* get_system_property(std::string key);
 };
