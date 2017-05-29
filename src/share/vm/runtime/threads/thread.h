@@ -26,7 +26,7 @@ class OSThread;
 
 
 class Thread {
-public:
+protected:
     OSThread* _osthread;
 
 public:
@@ -43,6 +43,7 @@ public:
     // OSThread
     OSThread* osthread()  { return _osthread; }
     void set_osthread(OSThread* osThread)  { _osthread = osThread; }
+    bool set_as_starting_thread();
 
     // Testers
     virtual bool is_VM_thread()       const            { return false; }
@@ -75,7 +76,7 @@ class Threads {
 private:
     static std::map<pthread_t, Thread*> _threads_table; /* for current() */
 public:
-    static Thread* get_pthread_by_id(pthread_t id)  { return _threads_table[id]; }
+    static Thread* get_pthread_by_id(pthread_t id);
     static void register_thread(Thread*);
 #endif
 private:

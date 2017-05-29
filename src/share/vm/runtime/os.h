@@ -11,7 +11,7 @@ typedef pthread_t thread_id_t;
 
 class OSThread;
 class Thread;
-
+class JavaThread;
 
 class os {
     // threads
@@ -45,6 +45,8 @@ private:
 public:
     static void start_thread(Thread*);
     static bool create_thread(Thread*, ThreadType, int stack_size=0);
+    static bool create_main_thread(JavaThread*);
+    static bool create_attached_thread(JavaThread* thread);
 
     // do not use a system-specific thread id to make cross-platform easier
     static thread_id_t gettid();

@@ -8,6 +8,6 @@
 
 
 /* always use app class loader and ignore the loader param for now */
-jclass find_class_from_class_loader(Symbol* name, Handle loader) {
+jclass find_class_from_class_loader(Symbol& name, Handle loader) {
     Klass* klass = SystemDictionary::resolve_or_fail(name, loader);
 }

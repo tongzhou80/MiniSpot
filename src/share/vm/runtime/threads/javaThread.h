@@ -55,8 +55,7 @@ private:
 
     InstanceKlass* _caller_class;
 public:
-    JavaThread();
-    JavaThread(bool is_attaching_via_jni);
+    JavaThread(bool is_attaching_via_jni=false);
     void initialize();
 
     enum JNIAttachStates {

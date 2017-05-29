@@ -9,7 +9,7 @@
 #include <runtime/handles.h>
 #include "jni.h"
 
-jclass find_class_from_class_loader(Symbol* name, Handle loader);
+jclass find_class_from_class_loader(Symbol& name, Handle loader);
 
 
 #endif //MINISPOT_JVM_H

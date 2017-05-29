@@ -5,10 +5,11 @@
 #include <iostream>
 #include <utilities/ostream.h>
 #include "jni.h"
-#include "../utilities/debug.h"
-#include "../runtime/threads/thread.h"
-#include "../runtime/threads/javaThread.h"
-
+#include "prims/jvm.h"
+#include "utilities/debug.h"
+#include "runtime/threads/thread.h"
+#include "runtime/threads/javaThread.h"
+#include "runtime/symbol.h"
 
 JavaVM main_vm;
 
@@ -34,11 +35,10 @@ static jint JNI_CreateJavaVM_inner(JavaVM **vm, void **penv, void *args) {
     bool can_try_again = true;
     result = Threads::create_vm((JavaVMInitArgs*) args, &can_try_again);
     if (result == JNI_OK) {
-//        JavaThread *thread = JavaThread::current();
-//        /* thread is thread_in_vm here */
-//
-//        *vm = (JavaVM *)(&main_vm);
-//        *(JNIEnv**)penv = thread->jni_environment();
+        JavaThread *thread = JavaThread::current();
+        /* thread is thread_in_vm here */
+        *vm = (JavaVM *)(&main_vm);
+        *(JNIEnv**)penv = thread->jni_environment();
     }
 }
 
@@ -65,12 +65,14 @@ jint jni_GetVersion(JNIEnv* env) {
 }
 
 jclass jni_FindClass(JNIEnv *env, const char *name) {
+
     InstanceKlass* calling_class = JavaThread::current()->caller_class();
     if (calling_class) {
         Loggers::todo << "todo: jni_FindClass needs to use caller class's loader to load the callee class" << std::endl;
     }
     else {
-
+        Symbol classname(name);
+        return find_class_from_class_loader(classname, NULL); // ignore loader param for now
     }
 }
 
@@ -87,4 +89,10 @@ struct JNINativeInterface_ jni_NativeInterface = {
 
         //jni_DefineClass,
         jni_FindClass
+};
+
+
+// Returns the function structure
+struct JNINativeInterface_* jni_functions() {
+    return &jni_NativeInterface;
 }

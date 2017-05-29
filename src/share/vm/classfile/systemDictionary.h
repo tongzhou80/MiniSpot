@@ -6,11 +6,10 @@
 #define MINISPOT_SYSTEMDICTIONARY_H
 
 #include <map>
-#include <oops/klass.h>
 #include "runtime/handles.h"
 #include <runtime/symbol.h>
 
-class oop;
+
 class InstanceKlass;
 
 class SystemProperty {
@@ -24,15 +23,16 @@ public:
 
 
 class SystemDictionary {
+private:
+    //static std::map<std::pair<std::string, oop*>, InstanceKlass*> _placeholder_table;
+    static std::map<std::string, SystemProperty*> _system_properties;
 public:
     static bool init();
     static bool initialize_system_properties();
 
-    static std::map<std::pair<std::string, oop>, InstanceKlass*> placeholder_table;
-    static std::map<std::string, SystemProperty*> system_properties;
     static bool load_main_class();
-    static Klass* resolve_or_fail(Symbol* name, Handle loader);
-
+    static Klass* resolve_or_fail(Symbol& name, Handle loader);
+    static SystemProperty* get_system_property(std::string key);
 };
 
 #endif //MINISPOT_SYSTEMDICTIONARY_H

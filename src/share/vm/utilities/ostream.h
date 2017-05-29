@@ -6,8 +6,12 @@
 #define MINISPOT_OSTREAM_H
 
 #include <fstream>
+#include <vector>
 
-
+class Strings {
+public:
+    static std::vector<std::string> split(const std::string &s, char delim);
+};
 
 class Loggers {
 public:

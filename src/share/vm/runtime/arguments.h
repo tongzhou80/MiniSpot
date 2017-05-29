@@ -16,7 +16,6 @@ class SystemProperty;
 class Arguments {
 public:
     // static std::map<std::string, SystemProperty*> system_properties; // move to systemDictionary to avoid some complicated include relations
-    static Symbol main_class;
     static std::vector<std::string> arguments;
 };
 

@@ -50,7 +50,7 @@ typedef jobject jarray;
 typedef int jmethodID;
 
 struct JavaVMOption {
-    char *optionString;  /* the option as a string in the default platform encoding */
+    const char *optionString;  /* the option as a string in the default platform encoding */
     void *extraInfo;
 };
 
@@ -65,7 +65,6 @@ struct JavaVMInitArgs {
 
 struct JavaVMAttachArgs {
     jint version;
-
     char *name;
     jobject group;
 };
@@ -101,11 +100,14 @@ struct JNINativeInterface_ {
     /* and other methods */
 };
 
+struct JNINativeInterface_* jni_functions();
+
 struct JNIEnv
 {
     JNINativeInterface_* functions; /* compatible with C style JNIEnv */
-#if defined(__cplusplus)
 
+    /* let's not use this and only use C interface for simplicity */
+#if defined(__cplusplus)
 
     jint GetVersion() {
         return functions->GetVersion(this);
@@ -114,26 +116,26 @@ struct JNIEnv
     jclass FindClass(const char *name) {
         return functions->FindClass(this, name);
     }
-
-    jmethodID GetMethodID(jclass clazz, const char* name, const char* sig) {
-        return functions->GetMethodID(this, clazz, name, sig);
-    }
-
-    jmethodID GetStaticMethodID(jclass clazz, const char* name, const char* sig) {
-        return functions->GetMethodID(this, clazz, name, sig);
-    }
-
-    void CallStaticVoidMethod(jclass cls, jmethodID methodID, ...) {
-        va_list args;
-        va_start(args,methodID);
-        functions->CallStaticVoidMethodV(this,cls,methodID,args);
-        va_end(args);
-    }
-
-    void CallStaticVoidMethodV(jclass cls, jmethodID methodID,
-                               va_list args) {
-        functions->CallStaticVoidMethodV(this,cls,methodID,args);
-    }
+//
+//    jmethodID GetMethodID(jclass clazz, const char* name, const char* sig) {
+//        return functions->GetMethodID(this, clazz, name, sig);
+//    }
+//
+//    jmethodID GetStaticMethodID(jclass clazz, const char* name, const char* sig) {
+//        return functions->GetMethodID(this, clazz, name, sig);
+//    }
+//
+//    void CallStaticVoidMethod(jclass cls, jmethodID methodID, ...) {
+//        va_list args;
+//        va_start(args,methodID);
+//        functions->CallStaticVoidMethodV(this,cls,methodID,args);
+//        va_end(args);
+//    }
+//
+//    void CallStaticVoidMethodV(jclass cls, jmethodID methodID,
+//                               va_list args) {
+//        functions->CallStaticVoidMethodV(this,cls,methodID,args);
+//    }
 
 
 #endif /*__cplusplus*/

@@ -15,6 +15,7 @@
 #include <unistd.h>
 #include "mutex.h"
 #include "runtime/threads/osThread.h"
+#include "runtime/threads/javaThread.h"
 
 /* For some reason, gettid is not implemented in glibc */
 thread_id_t os::gettid() {
@@ -149,4 +150,34 @@ void os::start_thread(Thread *thread) {
         sync_with_child->unlock();
         //pthread_mutex_unlock(sync_with_child->mutex());
     }
+}
+
+
+/////////////////////////////////////////////////////////////////////////////
+// attach existing thread
+
+// bootstrap the main thread
+bool os::create_main_thread(JavaThread* thread) {
+    return create_attached_thread(thread);
+}
+
+bool os::create_attached_thread(JavaThread* thread) {
+    // Allocate the OSThread object
+
+    OSThread *osthread = new OSThread(NULL, NULL);
+
+    if (osthread == NULL) {
+        return false;
+    }
+
+    // Store pthread info into the OSThread
+    osthread->set_thread_id(os::gettid());
+    osthread->set_pthread_id(pthread_self());
+
+    // Initial thread state is RUNNABLE
+    osthread->set_state(OSThread::RUNNABLE);
+
+    thread->set_osthread(osthread);
+    Threads::register_thread(thread);
+    return true;
 }

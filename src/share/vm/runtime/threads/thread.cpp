@@ -15,7 +15,6 @@ std::map<pthread_t, Thread*> Threads::_threads_table;
 
 void Threads::register_thread(Thread * thread) {
     _threads_table[thread->osthread()->pthread_id()] = thread;
-
 }
 #endif
 
@@ -29,7 +28,14 @@ jint Threads::create_vm(JavaVMInitArgs *args, bool *canTryAgain) {
     // Attach the main thread to this os thread
     JavaThread* main_thread = new JavaThread();
     main_thread->set_thread_state(JavaThread::_thread_in_vm);
-    Threads::add(main_thread);
+
+
+    if (!main_thread->set_as_starting_thread()) {
+        printf("Failed necessary internal allocation. Out of swap space");
+        delete main_thread;
+        *canTryAgain = false; // don't let caller call JNI_CreateJavaVM again
+        return JNI_ENOMEM;
+    }
 
     // Initialize global modules such as heap
     jint status = init::init_globals();
@@ -67,8 +73,21 @@ void Thread::run() {
     ZPPL("I am running");
 }
 
+bool Thread::set_as_starting_thread() {
+    // NOTE: this must be called inside the main thread.
+    return os::create_main_thread((JavaThread*)this);
+}
+
 
 #ifdef PTHREAD_OKAY
+Thread* Threads::get_pthread_by_id(pthread_t id) {
+    if (_threads_table.find(id) == _threads_table.end()) {
+        return NULL;
+    }
+    else {
+        return _threads_table[id];
+    }
+}
 
 Thread* Thread::current() {
     Thread* thread = Threads::get_pthread_by_id(pthread_self());

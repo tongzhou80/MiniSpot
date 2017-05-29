@@ -5,7 +5,9 @@
 #ifndef MINISPOT_INSTANCEKLASS_H
 #define MINISPOT_INSTANCEKLASS_H
 
-class InstanceKlass {
+#include "oops/klass.h"
+
+class InstanceKlass: public Klass {
 
 };
 

@@ -6,6 +6,8 @@
 #define MINISPOT_SYMBOL_H
 
 #include <string>
+#include <sstream>
+#include "utilities/ostream.h"
 
 class Symbol {
 private:
@@ -15,7 +17,8 @@ public:
     Symbol(const char*);
     Symbol& operator=(std::string s);
     Symbol& operator=(const char* s);
-    std::string str() { return _str; }
+    std::string& str() { return _str; }
+    std::vector<std::string> split(char delim) { return Strings::split(str(), delim); }
 };
 
 #endif //MINISPOT_SYMBOL_H

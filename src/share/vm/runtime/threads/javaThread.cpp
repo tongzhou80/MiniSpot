@@ -3,7 +3,7 @@
 //
 
 #include "javaThread.h"
-
+#include "prims/jni.h"
 
 JavaThread::JavaThread(bool is_attaching_via_jni) : Thread() {
     initialize();
@@ -16,9 +16,12 @@ JavaThread::JavaThread(bool is_attaching_via_jni) : Thread() {
 
 void JavaThread::initialize() {
     _next = NULL;
+    _jni_environment.functions = jni_functions();
     _thread_state = _thread_new;
     _jni_attach_state = _not_attaching_via_jni;
     _caller_class = NULL;
+
+    Threads::add(this);
 }
 
 

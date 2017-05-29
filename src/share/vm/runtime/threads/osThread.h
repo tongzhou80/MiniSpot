@@ -73,6 +73,8 @@ private:
 public:
 
     OSThread();
+    OSThread(OSThreadStartFunc start_proc, void *start_parm);
+    void intialize();
 
     thread_id_t thread_id()  { return _thread_id; }
     void set_thread_id(thread_id_t id)  { _thread_id = id; }
@@ -82,7 +84,7 @@ public:
 
     ThreadState get_state() { return _state; }
 
-    OSThread(OSThreadStartFunc start_proc, void *start_parm);
+
 
     ~OSThread();
 
