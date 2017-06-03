@@ -6,11 +6,11 @@
 #include <iostream>
 #include <cstring>
 #include <vector>
-#include <assert.h>
 #include <iomanip>
+#include <interpreter/bytecodes.h>
 #include "classFile.h"
 #include "utilities/sysUtil.h"
-
+#include "systemDictionary.h"
 
 
 ClassFile* ClassFileParser::parse() {
@@ -682,9 +682,9 @@ std::vector<Bytecode*> ClassFileParser::parseBytecode(u1 * code, int len) {
         char opcode;
         std::memcpy(&opcode, code+p, sizeof(char));
         p += sizeof(char);
-        JBCMeta* meta = SysUtil::bcdict[opcode];
+        JBCMeta* meta = SystemDictionary::bcdict[opcode];
         Bytecode* newbc = new Bytecode(meta);
-        newbc->set_ args_(code);
+        newbc->set_args(code);
 
         p += meta->arg_len;
 
@@ -698,20 +698,20 @@ std::vector<Bytecode*> ClassFileParser::parseBytecode(u1 * code, int len) {
 
 CpInfo* ConstantPool::get(u4 index, ConstantType type) {
     CpInfo* con = pool_array[index];
-    assert(con->tag == type);
+    assert(con->tag == type, "ConstantPool::get: ContanstType not match");
     return con;
 }
 
 std::string ConstantPool::getClassname(u4 index) {
     CpInfo* classconst = pool_array[index];
-    assert(classconst->tag == ConstantPool::ConstantClass);
+    assert(classconst->tag == ConstantPool::ConstantClass, "not a ConstantClass");
     int nameindex = ((ConstantClassInfo*)classconst)->name_index;
     return getUtf8(nameindex);
 }
 
 std::string ConstantPool::getUtf8(u4 index) {
     CpInfo* con = pool_array[index];
-    assert(con->tag == ConstantPool::ConstantUtf8);
+    assert(con->tag == ConstantPool::ConstantUtf8, "not a ConstantUtf8");
     ConstantUtf8Info* info = ((ConstantUtf8Info*)con);
 
     return std::string(((char*)info->bytes), info->length);

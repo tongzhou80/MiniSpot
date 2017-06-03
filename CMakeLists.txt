@@ -43,5 +43,11 @@ set(SOURCE_FILES
         src/share/vm/oops/instanceKlass.cpp src/share/vm/oops/instanceKlass.h
         src/share/vm/runtime/symbol.cpp src/share/vm/runtime/symbol.h
         src/share/vm/classfile/systemDictionary.cpp src/share/vm/classfile/systemDictionary.h
-        src/share/vm/utilities/ostream.cpp src/share/vm/utilities/ostream.h jre/java/lang/jre_core.h jre/java/lang/jre_class.cpp jre/java/lang/jre_class.h jre/java/lang/jre_metadata.cpp jre/java/lang/jre_metadata.h src/share/vm/prims/jvm.cpp src/share/vm/prims/jvm.h src/share/vm/runtime/arguments.cpp src/share/vm/runtime/arguments.h src/share/vm/utilities/sysUtil.cpp src/share/vm/utilities/sysUtil.h)
+        src/share/vm/utilities/ostream.cpp src/share/vm/utilities/ostream.h
+        jre/java/lang/jre_core.h jre/java/lang/jre_class.cpp jre/java/lang/jre_class.h
+        jre/java/lang/jre_metadata.cpp jre/java/lang/jre_metadata.h
+        src/share/vm/prims/jvm.cpp src/share/vm/prims/jvm.h
+        src/share/vm/runtime/arguments.cpp src/share/vm/runtime/arguments.h
+        src/share/vm/utilities/sysUtil.cpp src/share/vm/utilities/sysUtil.h
+        src/share/vm/interpreter/bytecodes.cpp src/share/vm/interpreter/bytecodes.h)
 add_executable(MiniSpot ${SOURCE_FILES})

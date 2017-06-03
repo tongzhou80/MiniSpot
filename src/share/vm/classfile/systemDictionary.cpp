@@ -7,6 +7,7 @@
 #include "classfile/classLoader.h"
 
 std::map<std::string, SystemProperty*> SystemDictionary::_system_properties;
+std::map<char, JBCMeta*> SystemDictionary::bcdict;
 
 /* argument parsing should override these properties */
 bool SystemDictionary::initialize_system_properties() {
@@ -14,8 +15,15 @@ bool SystemDictionary::initialize_system_properties() {
     _system_properties["java.class.path"] = aProperty;
 }
 
+void SystemDictionary::initialize_bcdict() {
+    bcdict[0xbb] = new JBCMeta(Bytecode::BC_new, "new", 2);
+    bcdict[0x59] = new JBCMeta(Bytecode::BC_dup, "dup", 0);
+    bcdict[0xb7] = new JBCMeta(Bytecode::BC_invokespecial, "invokespecial", 2);
+}
+
 bool SystemDictionary::init() {
     initialize_system_properties();
+    initialize_bcdict();
 }
 
 /* look for the class in the table, if not exist, try to load from classpath */

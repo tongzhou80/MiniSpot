@@ -8,7 +8,7 @@
 #include <map>
 #include "runtime/handles.h"
 #include <runtime/symbol.h>
-
+#include "interpreter/bytecodes.h"
 
 class InstanceKlass;
 
@@ -27,11 +27,16 @@ private:
     //static std::map<std::pair<std::string, oop*>, InstanceKlass*> _placeholder_table;
     static std::map<std::string, SystemProperty*> _system_properties;
 public:
+    static std::map<char, JBCMeta*> bcdict;
+
     static bool init();
     static bool initialize_system_properties();
 
     static Klass* resolve_or_fail(Symbol& name, Handle loader);
     static SystemProperty* get_system_property(std::string key);
+
+
+    static void initialize_bcdict();
 };
 
 #endif //MINISPOT_SYSTEMDICTIONARY_H
