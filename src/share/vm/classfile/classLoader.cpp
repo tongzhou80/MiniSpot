@@ -31,8 +31,8 @@ instanceKlassHandle ClassLoader::load_classfile(Symbol& name) {
 
 instanceKlassHandle ClassLoader::load_app_class(Symbol& name) {
     for (auto path: _app_search_path) {
-        auto fullpath = name.prepend(path).str();
-        printf("should load %s", fullpath.c_str());
+        auto fullpath = name.prepend(path).append(".class").str();
+        printf("should load %s\n", fullpath.c_str());
         ClassFile* classfile = parser.parse_from_file(fullpath);
         if (classfile) {
 

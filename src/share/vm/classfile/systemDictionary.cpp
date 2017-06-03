@@ -11,7 +11,8 @@ std::map<char, JBCMeta*> SystemDictionary::bcdict;
 
 /* argument parsing should override these properties */
 bool SystemDictionary::initialize_system_properties() {
-    SystemProperty* aProperty = new SystemProperty("java.class.path", ".");
+    //SystemProperty* aProperty = new SystemProperty("java.class.path", "./");
+    SystemProperty* aProperty = new SystemProperty("java.class.path", "../src/test/"); // hard-wired
     _system_properties["java.class.path"] = aProperty;
 }
 

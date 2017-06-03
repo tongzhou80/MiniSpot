@@ -60,6 +60,8 @@
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/gc/serial/defNewGeneration.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/gc/serial/tenuredGeneration.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/gc/serial/tenuredGeneration.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/interpreter/bytecodes.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/interpreter/bytecodes.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/oops/oop.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/oops/oopsHierarchy.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/oops/klass.cpp" isTestSource="false" />

@@ -8,7 +8,8 @@ no longer updated.
 
 
 ## Introduction
-Aiming to be like [Minix](https://en.wikipedia.org/wiki/MINIX), MiniSpot is an educational JVM based on HotSpot VM. 
+Aiming to be like [Minix](https://en.wikipedia.org/wiki/MINIX), MiniSpot is an educational JVM based on HotSpot VM. A JVM is not difficult to
+understand, this project shows you what a naive JVM really looks like without the high performance tweaks.
 
 It may serve as a teaching assisting tool for compiler classes, or as a guide for students who are interested in high-level language VM implementations.
 For example, it provides a clear interface of intermediate representation so that students could use the interface to
