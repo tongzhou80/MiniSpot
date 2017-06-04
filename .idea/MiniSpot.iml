@@ -81,7 +81,9 @@
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/classfile/systemDictionary.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/classfile/classFileParser.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/classfile/classLoader.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/classfile/classLoaderData.hpp.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/share/vm/classfile/classFileParser.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/share/vm/classfile/classLoaderData.hpp.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/jre/java/lang/jre_object.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/jre/java/lang/jre_class.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/jre/java/lang/jre_object.h" isTestSource="false" />

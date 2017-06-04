@@ -50,5 +50,5 @@ set(SOURCE_FILES
         src/share/vm/prims/jvm.cpp src/share/vm/prims/jvm.h
         src/share/vm/runtime/arguments.cpp src/share/vm/runtime/arguments.h
         src/share/vm/utilities/sysUtil.cpp src/share/vm/utilities/sysUtil.h
-        src/share/vm/interpreter/bytecodes.cpp src/share/vm/interpreter/bytecodes.h)
+        src/share/vm/interpreter/bytecodes.cpp src/share/vm/interpreter/bytecodes.h src/share/vm/classfile/classLoaderData.hpp.cpp src/share/vm/classfile/classLoaderData.hpp.h)
 add_executable(MiniSpot ${SOURCE_FILES})

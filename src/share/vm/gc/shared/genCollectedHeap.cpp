@@ -32,7 +32,7 @@ jint GenCollectedHeap::initialize() {
         _old_gen = new TenuredGeneration();
     }
 
-    ZPPL("done init GenCollectedHeap");
+    ZPPL("done init GenCollectedHeap; young and old gens need to ba initialized!!!");
 }
 
 size_t GenCollectedHeap::capacity() {
