@@ -1,5 +1,5 @@
-This project is out of personal interest and is currently under active development. The documentation is moving to [GitBook](https://gentlyguitar.gitbooks.io/minispot/content/), this page is
-no longer updated.
+This project is out of personal interest and is currently put on hold. The documentation is moving to [GitBook](https://gentlyguitar.gitbooks.io/minispot/content/), this page is
+no longer updated. This project is paused because it involves too much details of the VM. I am planning on letting loose of some requirements and not supporting Java thread, and making the implementation easier. 
 
 ## Table of Contents
 - [Introduction](#introduction)
